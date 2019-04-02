@@ -1,0 +1,389 @@
+:root {
+  font: 16px / 1 sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  color: #102418;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  margin: 0;
+  min-height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Home component begins */
+
+.main-section {
+  display: flex;
+  border-radius: 1rem;
+  box-shadow: 0 0.1rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+.main-section img {
+  flex: 1;
+  width: 50%;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+.home-section {
+  flex: 1;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  background-color: #d1b6e1;
+}
+.resume {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.resume p {
+  width: 40%;
+  text-align: justify;
+  margin: 0.5rem 0rem;
+}
+.resume h1 {
+  font-family: 'Luckiest Guy', cursive;
+  margin: 0.5rem 0rem;
+  letter-spacing: 0.5rem;
+}
+
+.language-word {
+  margin-top: 0.3rem;
+}
+.search-city-section {
+  display: flex;
+  margin: 1rem;
+}
+.city-section {
+  flex: 1;
+  margin: 0.3rem 0 0 0;
+}
+.text-section {
+  flex: 1;
+  padding-left: 0.5rem;
+  border-radius: 1rem;
+  border-style: none;
+}
+.button-section,
+.log-in-button,
+.sign-up-button {
+  flex: 1;
+  background: #beb639;
+  border-style: none;
+  border-radius: 1rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
+}
+.language-section {
+  display: flex;
+  justify-content: top;
+}
+.logIn-signUp-section {
+  display: flex;
+}
+.logIn-signUp-section p {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+/* Home component ends */
+/* LocalList component begins */
+
+.main-LocalList h1 {
+  text-align: center;
+}
+.table thead {
+  background-color: #c991f3;
+}
+.table tbody {
+  background-color: #d1b6e1;
+}
+.link {
+  font-weight: bold;
+  color: #102418;
+}
+.link:hover {
+  color: #beb639;
+  text-decoration: none;
+}
+
+/* LocalList component ends */
+/* LocalRegistration component begins */
+.local-registration-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #d1b6e1;
+}
+/* LocalRegistration component ends */
+/* VolunteerRegistration component begins */
+.volunteer-registration-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #d1b6e1;
+  border-radius: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.volunteer-registration-section button {
+  background: #beb639;
+  border-style: none;
+  border-radius: 1rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  margin: 0.5rem;
+}
+/* VolunteerRegistration component ends */
+/* CommentRegistration begins */
+.comment-registration-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #d1b6e1;
+  border-radius: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.comment-registration-section button {
+  background: #beb639;
+  border-style: none;
+  border-radius: 1rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  margin: 0.5rem;
+}
+/* CommentRegistration ends */
+/* LogIn component begins */
+.form-log-in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #d1b6e1;
+  border-radius: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.form-log-in button {
+  background: #beb639;
+  border-style: none;
+  border-radius: 1rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  margin: 0.5rem;
+}
+
+/* LogIn component ends */
+/* Style to all forms begin */
+.form-row {
+  padding: 0.5rem 0;
+  display: flex;
+}
+.form-row label {
+  padding-right: 0.5rem;
+}
+.form-row input {
+  flex: 1;
+  border-radius: 1rem;
+  border-style: none;
+  padding-left: 0.5rem;
+  height: 1.5rem;
+}
+/* Style to all forms end */
+/* LocalDetail component begins */
+.main-section {
+  display: flex;
+  margin: 5rem;
+}
+.detail-volunteer,
+.comment-list {
+  flex: 1;
+}
+
+.comment-list {
+  display: flex;
+  flex-flow: column wrap;
+  background-color: #b67df2;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+.comment-list h2 {
+  flex: 1;
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+  margin: 0;
+}
+.comment-list ul {
+  flex: 7;
+  margin: 0;
+  text-align: justify;
+  padding-right: 1rem;
+}
+
+.detail-volunteer {
+  display: flex;
+  flex-direction: column;
+}
+
+.volunteer-list {
+  flex: 1;
+  background-color: #c991f3;
+  border-bottom-left-radius: 1rem;
+}
+
+.volunteer-list h2 {
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+  margin: 0;
+}
+.frame-picture {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.frame-picture img {
+  min-width: 120px;
+  min-height: 120px;
+  max-width: 120px;
+  max-height: 120px;
+  object-fit: fill;
+  border-radius: 5rem;
+}
+
+.detail-section {
+  flex: 1;
+  background-color: #e2afaf;
+  border-top-left-radius: 1rem;
+  display: flex;
+  flex-flow: column wrap;
+}
+.detail-section h2 {
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin: 0;
+  flex: 1;
+}
+.label-detail {
+  margin: 0;
+  flex: 1;
+  padding-left: 1rem;
+  text-align: justify;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* LocalDetail component begins */
+
+nav {
+  border: 0.1rem solid red;
+  margin: 0;
+  border-radius: 1rem;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav li {
+  display: inline;
+}
+
+@media (max-width: 600px) {
+  .home-container {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+  /* Home component begins */
+  .main-section {
+    display: flex;
+    flex-flow: column wrap;
+  }
+  .main-section img {
+    width: 100%;
+    height: 5rem;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 0;
+  }
+  .home-section {
+    width: 100%;
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-top-right-radius: 0;
+  }
+  .resume {
+    width: 17rem;
+  }
+  .resume h1 {
+    font-size: 1.5rem;
+  }
+  .resume p {
+    width: 90%;
+    text-align: justify;
+    font-size: 0.8rem;
+  }
+
+  .language-section img {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .log-in-button,
+  .sign-up-button {
+    margin-bottom: 0.5rem;
+  }
+
+  .button-section,
+  .log-in-button,
+  .sign-up-button {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.5rem;
+    margin-left: 0.5rem;
+  }
+  /* Home components ends */
+  /* Detail components begins */
+  .detail-section {
+    border-top-right-radius: 1rem;
+  }
+  .volunteer-list {
+    border-bottom-left-radius: 0;
+  }
+  .frame-picture img {
+    width: 3rem;
+    height: 3rem;
+    object-fit: fill;
+    border-radius: 3rem;
+  }
+  .comment-list {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 1rem;
+  }
+  .comment-list ul {
+    padding-bottom: 0.5rem;
+  }
+  /* Detail components ends */
+  /* LocalList components begins */
+  .link:hover {
+    color: #beb639;
+    text-decoration: none;
+  }
+  /* LocalList components ends */
+}

@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using migo.Pages.Model;
 
 namespace content
 {
@@ -43,5 +44,11 @@ namespace content
     {
       modelBuilder.HasAnnotation("ProductVersion", "2.2.0-rtm-35687");
     }
+
+    public DbSet<Client> Clients { get; set; }
+    public DbSet<Comment> Comments { get; set; }
+    public DbSet<Local> Locals { get; set; }
+    public DbSet<Rol> Roles { get; set; }
+    public DbSet<Volunteer> Volunteers { get; set; }
   }
 }

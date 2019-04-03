@@ -27,7 +27,7 @@ class App extends Component {
           <Route exact path="/List/Detail/:idLocal" component={LocalDetail} />
           <Route exact path="/User" component={UserRegistration} />
           <Route exact path="/LogIn" component={LogIn} />
-          <Route exact path="/List/:idSearch" component={LocalList} />
+          <Route exact path="/List/:searchingWord" component={LocalList} />
           {/* <Route exact path="/LoginIn/:idUser" component={UserSession} /> */}
         </Switch>
       </Router>

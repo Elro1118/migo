@@ -2,44 +2,56 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import NavigationList from './NavigationList'
 
-import imageMarlene from '../images/Marlenes.jpg'
-import imageTeresa from '../images/Teresas.jpg'
-import imageSilvana from '../images/Silvanas.jpg'
-
 class LocalDetail extends Component {
   state = {
     requestStatus: 0,
-    local: {},
+    local: { address: '', state: '', city: '', name: '', schedule: '' },
     volunteers: [],
     comments: []
   }
   componentDidMount() {
     this.getLocal()
-    // this.getVolunteers()
-    // this.getComments()
+    this.getVolunteers()
+    this.getComments()
   }
 
   getLocal = () => {
-    axios.get(`https://localhost:5001/api/Local/1`).then(resp => {
-      if (resp.status === 200) {
-        this.setState({ requestStatus: resp.status, local: resp.data })
-      }
-    })
+    axios
+      .get(
+        `https://localhost:5001/api/Local/${this.props.match.params.idLocal}`
+      )
+      .then(resp => {
+        if (resp.status === 200) {
+          this.setState({ requestStatus: resp.status, local: resp.data })
+        }
+      })
   }
-  // getComments = () => {
-  //   axios.get(`https://localhost:5001/api/Local${1}`).then(resp => {
-  //     if (resp.status === 200) {
-  //       this.setState({ requestStatus: resp.status, comments: resp.data })
-  //     }
-  //   })
-  // }
-  // getVolunteers = () => {
-  //   axios.get(`https://localhost:5001/api/Local${1}`).then(resp => {
-  //     if (resp.status === 200) {
-  //       this.setState({ requestStatus: resp.status, volunteers: resp.data })
-  //     }
-  //   })
-  // }
+  getComments = () => {
+    axios
+      .get(
+        `https://localhost:5001/api/Comment/LocalId/${
+          this.props.match.params.idLocal
+        }`
+      )
+      .then(resp => {
+        if (resp.status === 200) {
+          this.setState({ requestStatus: resp.status, comments: resp.data })
+        }
+      })
+  }
+  getVolunteers = () => {
+    axios
+      .get(
+        `https://localhost:5001/api/Volunteer/LocalId/${
+          this.props.match.params.idLocal
+        }`
+      )
+      .then(resp => {
+        if (resp.status === 200) {
+          this.setState({ requestStatus: resp.status, volunteers: resp.data })
+        }
+      })
+  }
 
   render() {
     return (
@@ -50,49 +62,39 @@ class LocalDetail extends Component {
             <div className="detail-section">
               <h2>Detail</h2>
               <div className="label-detail">
-                <label htmlFor="local">Local: {this.state.local.name}</label>
+                <label htmlFor="local">
+                  Local: {this.state.local.name.toUpperCase()}
+                </label>
                 <label htmlFor="location">
                   Location:
-                  {this.state.local.address +
+                  {this.state.local.address.toUpperCase() +
                     ' ' +
-                    this.state.local.city +
+                    this.state.local.city.toUpperCase() +
                     ' ' +
-                    this.state.local.state +
+                    this.state.local.state.toUpperCase() +
                     '-' +
                     this.state.local.zipcode}
                 </label>
                 <label htmlFor="schedule">
-                  Schedule:{this.state.local.address}
+                  Schedule:{this.state.local.schedule.toUpperCase()}
                 </label>
               </div>
             </div>
             <div className="volunteer-list">
               <h2>Volunteers</h2>
               <div className="frame-picture">
-                <img src={imageMarlene} alt="Marlene" />
-                <img src={imageMarlene} alt="Marlene" />
-                <img src={imageMarlene} alt="Marlene" />
-                <img src={imageTeresa} alt="Teresa" />
-                <img src={imageTeresa} alt="Teresa" />
-                <img src={imageTeresa} alt="Teresa" />
-                <img src={imageSilvana} alt="Silvana" />
-                <img src={imageSilvana} alt="Silvana" />
-                <img src={imageSilvana} alt="Silvana" />
+                {this.state.volunteers.map((m, i) => {
+                  return <img key={i} src={m.photo} alt={m.name} />
+                })}
               </div>
             </div>
           </div>
           <div className="comment-list">
             <h2>Comments</h2>
             <ul>
-              <li>
-                Maritza: Las clases son gratis, las profesoras son un amor y
-                siempre estan compartiendo snacks con los alumnos.
-              </li>
-              <li>
-                Odoris: Me encanta este lugar porque las pesonas que enseñan
-                aquí son amables y acojedores. Además de hay cafe gratis todos
-                los refrigerios.
-              </li>
+              {this.state.comments.map((m, i) => {
+                return <li key={i}> {m.description} </li>
+              })}
             </ul>
           </div>
         </div>

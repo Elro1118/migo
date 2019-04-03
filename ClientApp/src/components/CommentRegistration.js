@@ -29,7 +29,7 @@ class CommentRegistration extends Component {
         localId: {
           type: 'number',
           title: 'localId',
-          default: 1 //parseInt(this.props.match.params.idSearch)
+          default: parseInt(this.props.match.params.idLocal, 10)
         }
       }
     },
@@ -61,7 +61,7 @@ class CommentRegistration extends Component {
         {this.state.requestStatus === 201 ? (
           <div className="alert alert-success" role="alert">
             It added successfully. Click it if you would like to go{' '}
-            <Link to={`/List/${this.props.match.params.idSearch}`}>List</Link>.
+            <Link to={`/List/${this.props.match.params.idLocal}`}>List</Link>.
           </div>
         ) : (
           <Form

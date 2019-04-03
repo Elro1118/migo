@@ -4,6 +4,7 @@ import homePicture from '../images/homePicture.jpg'
 
 class Home extends Component {
   state = {
+    searchingWord: '',
     selectedLanguage: ''
   }
 
@@ -15,6 +16,9 @@ class Home extends Component {
     this.setState({
       selectedLanguage: this.getCurrentLanguageFromHtml()
     })
+  }
+  handleChanged = event => {
+    this.setState({ searchingWord: event.target.value })
   }
 
   render() {
@@ -48,8 +52,10 @@ class Home extends Component {
                 className="text-section"
                 type="text"
                 placeholder="Enter city or zipcode"
+                value={this.state.searchingWord}
+                onChange={this.handleChanged}
               />
-              <Link to={`List/1`}>
+              <Link to={`List/${this.state.searchingWord}`}>
                 <button className="button-section">Search</button>
               </Link>
             </div>

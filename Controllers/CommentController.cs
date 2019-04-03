@@ -43,18 +43,18 @@ namespace content.Controllers
     }
 
     // GET: api/Comment/LocalId
-    // [HttpGet("LocalId/{id}")]
-    // public async Task<ActionResult<Comment>> GetCommentsForLocal(int id)
-    // {
-    //   var comment = await _context.Comments..Where(w => w.localId == id);
+    [HttpGet("LocalId/{id}")]
+    public async Task<ActionResult<List<Comment>>> GetCommentsForLocal(int id)
+    {
+      var comment = await _context.Comments.Where(w => w.localId == id).ToListAsync();
 
-    //   if (comment == null)
-    //   {
-    //     return NotFound();
-    //   }
+      if (comment == null)
+      {
+        return NotFound();
+      }
 
-    //   return comment;
-    // }
+      return comment;
+    }
 
 
     // PUT: api/Comment/5

@@ -22,19 +22,19 @@ namespace content.Controllers
     }
 
     [HttpGet("locals")]
-    public ActionResult SearchForPicture([FromQuery] string query)
+    public ActionResult<List<Volunteer>> SearchForPicture([FromQuery] string query)
     {
       query = query.ToLower();
       var checkingForZipCode = int.TryParse(query, out var zipCode);
-      var results = db.Locals;
-      // if (checkingForZipCode)
-      // {
-      //   results = results.Where(w => w.Zipcode <= zipCode);
-      // }
-      // else
-      // {
-      //   results = db.Locals.Where(w => w.City.ToLower().Contains(query));
-      // }
+      var results = db.Locals.AsQueryable();
+      if (checkingForZipCode)
+      {
+        results = results.Where(w => w.Zipcode == zipCode);
+      }
+      else
+      {
+        results = db.Locals.Where(w => w.City.ToLower().Contains(query));
+      }
       return Ok(new { SearchingFor = query, results = results, checkingForZipCode });
     }
 

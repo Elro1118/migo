@@ -42,18 +42,18 @@ namespace content.Controllers
       return volunteer;
     }
     // GET: api/Volunteer/LocalId/
-    // [HttpGet("LocalId/{id}")]
-    // public async Task<ActionResult<Volunteer>> GetVolunteerForLocal(int id)
-    // {
-    //   var volunteer = await _context.Volunteers.Where(w => w.localId == id);
+    [HttpGet("LocalId/{id}")]
+    public async Task<ActionResult<List<Volunteer>>> GetVolunteerForLocal(int id)
+    {
+      var volunteer = await _context.Volunteers.Where(w => w.localId == id).ToListAsync();
 
-    //   if (volunteer == null)
-    //   {
-    //     return NotFound();
-    //   }
+      if (volunteer == null)
+      {
+        return NotFound();
+      }
 
-    //   return volunteer;
-    // }
+      return volunteer;
+    }
 
 
     // PUT: api/Volunteer/5

@@ -15,11 +15,20 @@ class LocalList extends Component {
   }
 
   getLocals = () => {
-    axios.get(`https://localhost:5001/api/Local`).then(resp => {
-      if (resp.status === 200) {
-        this.setState({ requestStatus: resp.status, locals: resp.data })
-      }
-    })
+    axios
+      .get(
+        `https://localhost:5001/api/Search/locals?query=${
+          this.props.match.params.searchingWord
+        }`
+      )
+      .then(resp => {
+        if (resp.status === 200) {
+          this.setState({
+            requestStatus: resp.status,
+            locals: resp.data.results
+          })
+        }
+      })
   }
   render() {
     return (
@@ -53,26 +62,17 @@ class LocalList extends Component {
                           m.zipcode}
                       </td>
                       <td>
-                        <Link
-                          to={`Detail/${this.state.locals.id}`}
-                          className="link"
-                        >
+                        <Link to={`/List/Detail/${m.id}`} className="link">
                           <i className="fas fa-info-circle" />
                         </Link>
                       </td>
                       <td>
-                        <Link
-                          to={`Volunteer/${this.state.locals.id}`}
-                          className="link"
-                        >
+                        <Link to={`Volunteer/${m.id}`} className="link">
                           Add
                         </Link>
                       </td>
                       <td>
-                        <Link
-                          to={`Comment/${this.state.locals.id}`}
-                          className="link"
-                        >
+                        <Link to={`Comment/${m.id}`} className="link">
                           Add
                         </Link>
                       </td>

@@ -36,7 +36,8 @@ class CommentRegistration extends Component {
     uiSchema: {
       id: { 'ui:widget': 'hidden' },
       active: { 'ui:widget': 'hidden' },
-      localId: { 'ui:widget': 'hidden' }
+      localId: { 'ui:widget': 'hidden' },
+      description: { 'ui:widget': 'textarea' }
     },
     requestStatus: 0
   }
@@ -52,7 +53,6 @@ class CommentRegistration extends Component {
         }
       })
   }
-  rend
 
   render() {
     return (
@@ -60,7 +60,7 @@ class CommentRegistration extends Component {
         <NavigationList />
         {this.state.requestStatus === 201 ? (
           <div className="alert alert-success" role="alert">
-            It created successfully. Click it if you would like to go{' '}
+            It added successfully. Click it if you would like to go{' '}
             <Link to={`/List/${this.props.match.params.idSearch}`}>List</Link>.
           </div>
         ) : (

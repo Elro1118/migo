@@ -42,6 +42,21 @@ namespace content.Controllers
       return comment;
     }
 
+    // GET: api/Comment/LocalId
+    // [HttpGet("LocalId/{id}")]
+    // public async Task<ActionResult<Comment>> GetCommentsForLocal(int id)
+    // {
+    //   var comment = await _context.Comments..Where(w => w.localId == id);
+
+    //   if (comment == null)
+    //   {
+    //     return NotFound();
+    //   }
+
+    //   return comment;
+    // }
+
+
     // PUT: api/Comment/5
     [HttpPut("{id}")]
     public async Task<IActionResult> PutComment(int id, Comment comment)

@@ -84,6 +84,7 @@ class VolunteerRegistration extends Component {
           </div>
         ) : (
           <Form
+            className="form-section"
             schema={this.state.formSchema}
             uiSchema={this.state.uiSchema}
             onSubmit={this.onSubmit}

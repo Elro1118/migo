@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 import NavigationList from './NavigationList'
 
 import imageMarlene from '../images/Marlenes.jpg'
@@ -6,6 +7,40 @@ import imageTeresa from '../images/Teresas.jpg'
 import imageSilvana from '../images/Silvanas.jpg'
 
 class LocalDetail extends Component {
+  state = {
+    requestStatus: 0,
+    local: {},
+    volunteers: [],
+    comments: []
+  }
+  componentDidMount() {
+    this.getLocal()
+    // this.getVolunteers()
+    // this.getComments()
+  }
+
+  getLocal = () => {
+    axios.get(`https://localhost:5001/api/Local/1`).then(resp => {
+      if (resp.status === 200) {
+        this.setState({ requestStatus: resp.status, local: resp.data })
+      }
+    })
+  }
+  // getComments = () => {
+  //   axios.get(`https://localhost:5001/api/Local${1}`).then(resp => {
+  //     if (resp.status === 200) {
+  //       this.setState({ requestStatus: resp.status, comments: resp.data })
+  //     }
+  //   })
+  // }
+  // getVolunteers = () => {
+  //   axios.get(`https://localhost:5001/api/Local${1}`).then(resp => {
+  //     if (resp.status === 200) {
+  //       this.setState({ requestStatus: resp.status, volunteers: resp.data })
+  //     }
+  //   })
+  // }
+
   render() {
     return (
       <div>
@@ -15,12 +50,19 @@ class LocalDetail extends Component {
             <div className="detail-section">
               <h2>Detail</h2>
               <div className="label-detail">
-                <label htmlFor="local">Local: Pasadena Church</label>
+                <label htmlFor="local">Local: {this.state.local.name}</label>
                 <label htmlFor="location">
-                  Location: 227 70th St S, St Petersburg, FL 33707
+                  Location:
+                  {this.state.local.address +
+                    ' ' +
+                    this.state.local.city +
+                    ' ' +
+                    this.state.local.state +
+                    '-' +
+                    this.state.local.zipcode}
                 </label>
                 <label htmlFor="schedule">
-                  Schedule: Tuesday at 10:00am to 12:00m
+                  Schedule:{this.state.local.address}
                 </label>
               </div>
             </div>

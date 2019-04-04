@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Swagger;
+using content.ImageHelper;
 
 namespace content
 {
@@ -31,6 +32,7 @@ namespace content
       {
         options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
       });
+
 
       services.AddHealthChecks();
       // Register the Swagger generator, defining 1 or more Swagger documents

@@ -18,7 +18,7 @@ namespace content.Controllers
   {
 
 
-    // private readonly IImageHandler _imageHandler;
+    private readonly IImageHandler _imageHandler;
 
     // private readonly IOptions<content.Helpers.CloudinaryKeys> _options;
 
@@ -41,6 +41,7 @@ namespace content.Controllers
 
     public VolunteerController()
     {
+      this._imageHandler = new ImageHandler(new ImageWriter());
       _context = new DatabaseContext();
     }
 
@@ -114,13 +115,14 @@ namespace content.Controllers
     public async Task<ActionResult<Volunteer>> PostVolunteer(Volunteer volunteer)
     {
 
+      var path = await this._imageHandler.UploadImage(volunteer.Photo);
+
+      // var rv = new content.Helpers.CloudinaryStorage(_options.Value).UploadFile(path);
+
       _context.Volunteers.Add(volunteer);
       await _context.SaveChangesAsync();
 
 
-      // var path = await _imageHandler.UploadImage(file);
-
-      // var rv = new content.Helpers.CloudinaryStorage(_options.Value).UploadFile(path);
 
       return CreatedAtAction("GetVolunteer", new { id = volunteer.Id }, volunteer);
     }

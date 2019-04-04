@@ -22,7 +22,7 @@ namespace content.ImageHelper
 
   {
 
-    Task<string> UploadImage(IFormFile file);
+    Task<string> UploadImage(string filedata);
 
   }
 
@@ -32,7 +32,7 @@ namespace content.ImageHelper
 
   {
 
-    Task<string> UploadImage(IFormFile file);
+    Task<string> UploadImage(string filedata);
 
   }
 
@@ -56,11 +56,11 @@ namespace content.ImageHelper
 
 
 
-    public async Task<string> UploadImage(IFormFile file)
+    public async Task<string> UploadImage(string filedata)
 
     {
 
-      var result = await _imageWriter.UploadImage(file);
+      var result = await _imageWriter.UploadImage(filedata);
 
       return result;
 
@@ -76,24 +76,24 @@ namespace content.ImageHelper
 
   {
 
-    public async Task<string> UploadImage(IFormFile file)
+    public async Task<string> UploadImage(string filedata)
 
     {
 
-      var exists = CheckIfImageFile(file);
-
-      if (exists)
-
+      var splitted = filedata.Split(';');
+      var fileType = splitted[0];
+      var name = splitted[1];//"name=mira.jpg"
+      var extension = "." + name.Split('.')[1];
+      var data = splitted[2].Split(',')[1];
+      // check to see if its an image, 
+      var isImage = extension == ".jpg" || extension == ".jpeg" || extension == ".png";
+      // if yes, then save to disk
+      if (isImage)
       {
-
-        return await WriteFile(file);
+        return await WriteFile(data, extension);
 
       }
-
-
-
       return "Invalid image file";
-
     }
 
 
@@ -142,7 +142,7 @@ namespace content.ImageHelper
 
     /// <returns></returns>
 
-    public async Task<string> WriteFile(IFormFile file)
+    public async Task<string> WriteFile(string base64FileData, string extension)
 
     {
 
@@ -154,23 +154,14 @@ namespace content.ImageHelper
 
       {
 
-        var extension = "." + file.FileName.Split('.')[file.FileName.Split('.').Length - 1];
-
         fileName = Guid.NewGuid().ToString() + extension; //Create a new Name 
 
         //for the file due to security reasons.
 
         path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
 
+        File.WriteAllBytes(path, Convert.FromBase64String(base64FileData));
 
-
-        using (var bits = new FileStream(path, FileMode.Create))
-
-        {
-
-          await file.CopyToAsync(bits);
-
-        }
 
       }
 

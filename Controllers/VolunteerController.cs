@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using content;
 using migo.Pages.Model;
+using Microsoft.Extensions.Options;
+using content.ImageHelper;
 
 namespace content.Controllers
 {
@@ -14,6 +16,27 @@ namespace content.Controllers
   [ApiController]
   public class VolunteerController : ControllerBase
   {
+
+
+    // private readonly IImageHandler _imageHandler;
+
+    // private readonly IOptions<content.Helpers.CloudinaryKeys> _options;
+
+
+
+    // public ImageController(IImageHandler imageHandler, IOptions<content.Helpers.CloudinaryKeys> options)
+
+    // {
+    //   _imageHandler = imageHandler;
+
+    //   _options = options;
+
+    //   Console.WriteLine(_options.Value.CloudName);
+
+    // }
+
+
+
     private readonly DatabaseContext _context;
 
     public VolunteerController()
@@ -90,8 +113,14 @@ namespace content.Controllers
     [HttpPost]
     public async Task<ActionResult<Volunteer>> PostVolunteer(Volunteer volunteer)
     {
+
       _context.Volunteers.Add(volunteer);
       await _context.SaveChangesAsync();
+
+
+      // var path = await _imageHandler.UploadImage(file);
+
+      // var rv = new content.Helpers.CloudinaryStorage(_options.Value).UploadFile(path);
 
       return CreatedAtAction("GetVolunteer", new { id = volunteer.Id }, volunteer);
     }

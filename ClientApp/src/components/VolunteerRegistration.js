@@ -37,9 +37,7 @@ class VolunteerRegistration extends Component {
         },
         photo: {
           type: 'string',
-          // format: 'uri',
-          title: 'Photo',
-          default: ''
+          title: 'Photo'
         },
         active: {
           type: 'boolean',
@@ -56,12 +54,14 @@ class VolunteerRegistration extends Component {
     uiSchema: {
       id: { 'ui:widget': 'hidden' },
       active: { 'ui:widget': 'hidden' },
-      localId: { 'ui:widget': 'hidden' }
+      localId: { 'ui:widget': 'hidden' },
+      photo: { 'ui:widget': 'file' }
     },
     requestStatus: 0
   }
 
   onSubmit = event => {
+    console.log(event.formData)
     axios
       .post('https://localhost:5001/api/Volunteer', event.formData)
       .then(resp => {

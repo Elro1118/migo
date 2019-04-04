@@ -1,16 +1,15 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 import Form from 'react-jsonschema-form'
-
 import NavigationList from './NavigationList'
 
-class VolunteerRegistration extends Component {
+class AddLocal extends Component {
   state = {
     formSchema: {
-      title: 'Add a new volunteer',
+      title: 'Add a new local',
       type: 'object',
-      required: ['name', 'telephone', 'email', 'photo'],
+      required: ['name', 'address', 'city', 'state', 'zipcode', 'schedule'],
       properties: {
         id: {
           type: 'number',
@@ -20,53 +19,58 @@ class VolunteerRegistration extends Component {
         name: {
           type: 'string',
           title: 'Name',
-          maxLength: 150,
           default: 'Full name'
         },
-        telephone: {
+        address: {
           type: 'string',
-          title: 'Telephone',
-          pattern: '^[0-9()\\-\\.\\s]+$',
+          title: 'Address',
           default: ''
         },
-        email: {
+        city: {
           type: 'string',
-          title: 'Email',
-          format: 'email',
-          default: 'migo@migo.com'
+          title: 'City',
+          default: 'Saint Petersburg'
         },
-        photo: {
+        state: {
           type: 'string',
-          title: 'Photo'
+          title: 'State',
+          default: 'Florida'
+        },
+        zipcode: {
+          type: 'number',
+          title: 'Zip code',
+          default: ''
+        },
+        schedule: {
+          type: 'string',
+          title: 'Schedule',
+          default: 'schedule'
         },
         active: {
           type: 'boolean',
           title: 'active',
           default: true
         },
-        localId: {
+        clientId: {
           type: 'number',
-          title: 'localId',
-          default: parseInt(this.props.match.params.idLocal, 10)
+          title: 'clientId',
+          default: parseInt(this.props.match.params.idUser, 10)
         }
       }
     },
     uiSchema: {
       id: { 'ui:widget': 'hidden' },
       active: { 'ui:widget': 'hidden' },
-      localId: { 'ui:widget': 'hidden' },
-      photo: { 'ui:widget': 'file' }
+      clientId: { 'ui:widget': 'hidden' },
+      schedule: { 'ui:widget': 'textarea' }
     },
     requestStatus: 0
   }
 
   onSubmit = event => {
-    console.log(event.formData)
     axios
-      .post('https://localhost:5001/api/Volunteer', event.formData)
+      .post('https://localhost:5001/api/Local', event.formData)
       .then(resp => {
-        console.log(resp)
-
         if (resp.status === 201) {
           this.setState({ requestStatus: resp.status })
         }
@@ -95,4 +99,4 @@ class VolunteerRegistration extends Component {
   }
 }
 
-export default VolunteerRegistration
+export default AddLocal

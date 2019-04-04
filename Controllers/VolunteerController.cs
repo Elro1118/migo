@@ -20,23 +20,6 @@ namespace content.Controllers
 
     private readonly IImageHandler _imageHandler;
 
-    // private readonly IOptions<content.Helpers.CloudinaryKeys> _options;
-
-
-
-    // public ImageController(IImageHandler imageHandler, IOptions<content.Helpers.CloudinaryKeys> options)
-
-    // {
-    //   _imageHandler = imageHandler;
-
-    //   _options = options;
-
-    //   Console.WriteLine(_options.Value.CloudName);
-
-    // }
-
-
-
     private readonly DatabaseContext _context;
 
     public VolunteerController()
@@ -114,15 +97,13 @@ namespace content.Controllers
     [HttpPost]
     public async Task<ActionResult<Volunteer>> PostVolunteer(Volunteer volunteer)
     {
-
       var path = await this._imageHandler.UploadImage(volunteer.Photo);
+      var rv = await new migo.Helpers.CloudinaryStorage().UploadFile(path);
 
-      // var rv = new content.Helpers.CloudinaryStorage(_options.Value).UploadFile(path);
+      volunteer.Photo = rv.SecureUri.AbsoluteUri;
 
       _context.Volunteers.Add(volunteer);
       await _context.SaveChangesAsync();
-
-
 
       return CreatedAtAction("GetVolunteer", new { id = volunteer.Id }, volunteer);
     }

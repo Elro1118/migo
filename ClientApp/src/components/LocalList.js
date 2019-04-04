@@ -27,6 +27,7 @@ class LocalList extends Component {
             requestStatus: resp.status,
             locals: resp.data.results
           })
+          localStorage.setItem('myWord', this.props.match.params.searchingWord)
         }
       })
   }

@@ -56,7 +56,7 @@ class LocalDetail extends Component {
   render() {
     return (
       <div>
-        <NavigationList title="Detail" />
+        <NavigationList />
         <div className="main-section">
           <div className="detail-volunteer">
             <div className="detail-section">

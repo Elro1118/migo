@@ -60,8 +60,8 @@ class CommentRegistration extends Component {
         <NavigationList />
         {this.state.requestStatus === 201 ? (
           <div className="alert alert-success" role="alert">
-            It added successfully. Click it if you would like to go{' '}
-            <Link to={`/List/${this.props.match.params.idLocal}`}>List</Link>.
+            Migo added successfully. Click it if you would like to go{' '}
+            <Link to={`/List/${localStorage.getItem('myWord')}`}>List</Link>.
           </div>
         ) : (
           <Form

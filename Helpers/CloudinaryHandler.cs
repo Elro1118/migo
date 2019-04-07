@@ -37,7 +37,7 @@ namespace migo.Helpers
 
       };
 
-      var uploadResult = await _cloudinary.UploadAsync(uploadParams);//.Upload(uploadParams);
+      var uploadResult = await _cloudinary.UploadAsync(uploadParams);
 
       return uploadResult;
 

@@ -124,8 +124,6 @@ namespace content.ImageHelper
 
       }
 
-
-
       return WriterHelper.GetImageFormat(fileBytes) != WriterHelper.ImageFormat.unknown;
 
     }

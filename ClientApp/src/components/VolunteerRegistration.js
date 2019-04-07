@@ -21,11 +21,14 @@ class VolunteerRegistration extends Component {
           type: 'string',
           title: 'Name',
           maxLength: 150,
+          minLength: 1,
           default: 'Full name'
         },
         telephone: {
           type: 'string',
           title: 'Telephone',
+          maxLength: 10,
+          minLength: 10,
           pattern: '^[0-9()\\-\\.\\s]+$',
           default: ''
         },
@@ -61,16 +64,23 @@ class VolunteerRegistration extends Component {
   }
 
   onSubmit = event => {
-    console.log(event.formData)
-    axios
-      .post('https://localhost:5001/api/Volunteer', event.formData)
-      .then(resp => {
-        console.log(resp)
+    let splitted = event.formData.photo.split(';')
+    let typeFile = splitted[0].includes('image')
+    let data = splitted[2].split(',')[1]
 
-        if (resp.status === 201) {
-          this.setState({ requestStatus: resp.status })
-        }
-      })
+    console.log(data)
+
+    if (typeFile) {
+      axios
+        .post('https://localhost:5001/api/Volunteer', event.formData)
+        .then(resp => {
+          console.log(resp)
+
+          if (resp.status === 201) {
+            this.setState({ requestStatus: resp.status })
+          }
+        })
+    }
   }
 
   render() {

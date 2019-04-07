@@ -63,6 +63,28 @@ class VolunteerRegistration extends Component {
     requestStatus: 0
   }
 
+  // processFile = files => {
+  //   const f = files[0]
+  //   return new Promise((resolve, reject) => {
+  //     const reader = new FileReader()
+  //     reader.onload = event => resolve(event.target.result)
+  //     reader.readAsDataURL(f)
+  //   })
+  // }
+
+  // FileWidget = props => {
+  //   return (
+  //     <input
+  //       type="file"
+  //       accept="image/*"
+  //       required={props.required}
+  //       onChange={event =>
+  //         this.processFile(event.target.files).then(props.onChange)
+  //       }
+  //     />
+  //   )
+  // }
+
   onSubmit = event => {
     let splitted = event.formData.photo.split(';')
     let typeFile = splitted[0].includes('image')

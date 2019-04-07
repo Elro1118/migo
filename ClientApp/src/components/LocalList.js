@@ -36,7 +36,7 @@ class LocalList extends Component {
       <div className="main-LocalList">
         <NavigationHome />
         <h1>Local List</h1>
-        {this.state.requestStatus === 200 ? (
+        {this.state.locals.length > 0 && this.state.requestStatus === 200 ? (
           <div className="table-responsive">
             <table className="table">
               <thead>
@@ -83,9 +83,13 @@ class LocalList extends Component {
               </tbody>
             </table>
           </div>
+        ) : this.state.requestStatus === 0 ? (
+          <div className="alert alert-info" role="alert">
+            Migo is loading results...
+          </div>
         ) : (
           <div className="alert alert-info" role="alert">
-            Migo couldn't fine locals for you. Click it if you would like to go{' '}
+            Migo couldn't fine results for you. Click it if you would like to go{' '}
             <Link to={`/`}>Home</Link>.
           </div>
         )}

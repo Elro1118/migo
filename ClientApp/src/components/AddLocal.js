@@ -68,13 +68,11 @@ class AddLocal extends Component {
   }
 
   onSubmit = event => {
-    axios
-      .post('https://localhost:5001/api/Local', event.formData)
-      .then(resp => {
-        if (resp.status === 201) {
-          this.setState({ requestStatus: resp.status })
-        }
-      })
+    axios.post('/api/Local', event.formData).then(resp => {
+      if (resp.status === 201) {
+        this.setState({ requestStatus: resp.status })
+      }
+    })
   }
 
   render() {

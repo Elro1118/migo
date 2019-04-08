@@ -16,11 +16,7 @@ class LocalList extends Component {
 
   getLocals = () => {
     axios
-      .get(
-        `https://localhost:5001/api/Search/locals?query=${
-          this.props.match.params.searchingWord
-        }`
-      )
+      .get(`/api/Search/locals?query=${this.props.match.params.searchingWord}`)
       .then(resp => {
         if (resp.status === 200) {
           this.setState({

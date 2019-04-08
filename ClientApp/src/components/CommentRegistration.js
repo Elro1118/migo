@@ -43,15 +43,13 @@ class CommentRegistration extends Component {
   }
 
   onSubmit = event => {
-    axios
-      .post('https://localhost:5001/api/Comment', event.formData)
-      .then(resp => {
-        console.log(resp)
+    axios.post('/api/Comment', event.formData).then(resp => {
+      console.log(resp)
 
-        if (resp.status === 201) {
-          this.setState({ requestStatus: resp.status })
-        }
-      })
+      if (resp.status === 201) {
+        this.setState({ requestStatus: resp.status })
+      }
+    })
   }
 
   render() {

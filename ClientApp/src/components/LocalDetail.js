@@ -16,23 +16,15 @@ class LocalDetail extends Component {
   }
 
   getLocal = () => {
-    axios
-      .get(
-        `https://localhost:5001/api/Local/${this.props.match.params.idLocal}`
-      )
-      .then(resp => {
-        if (resp.status === 200) {
-          this.setState({ requestStatus: resp.status, local: resp.data })
-        }
-      })
+    axios.get(`/api/Local/${this.props.match.params.idLocal}`).then(resp => {
+      if (resp.status === 200) {
+        this.setState({ requestStatus: resp.status, local: resp.data })
+      }
+    })
   }
   getComments = () => {
     axios
-      .get(
-        `https://localhost:5001/api/Comment/LocalId/${
-          this.props.match.params.idLocal
-        }`
-      )
+      .get(`/api/Comment/LocalId/${this.props.match.params.idLocal}`)
       .then(resp => {
         if (resp.status === 200) {
           this.setState({ requestStatus: resp.status, comments: resp.data })
@@ -41,11 +33,7 @@ class LocalDetail extends Component {
   }
   getVolunteers = () => {
     axios
-      .get(
-        `https://localhost:5001/api/Volunteer/LocalId/${
-          this.props.match.params.idLocal
-        }`
-      )
+      .get(`/api/Volunteer/LocalId/${this.props.match.params.idLocal}`)
       .then(resp => {
         if (resp.status === 200) {
           this.setState({ requestStatus: resp.status, volunteers: resp.data })

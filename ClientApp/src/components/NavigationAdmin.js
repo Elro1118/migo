@@ -5,7 +5,8 @@ class NavigationAdmin extends Component {
     return (
       <div>
         <h5>
-          <Link to={`/`}>Home</Link> / <Link to={`/Admin/1`}> Admin</Link>
+          <Link to={`/`}>Home</Link> /{' '}
+          <Link to={`/Admin/${localStorage.getItem('myUserId')}`}> Admin</Link>
         </h5>
       </div>
     )

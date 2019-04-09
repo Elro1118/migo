@@ -10,7 +10,8 @@ import LogIn from './components/LogIn'
 import LocalList from './components/LocalList'
 import AddLocal from './components/AddLocal'
 import UserAdmin from './components/UserAdmin'
-// import auth from './Auth'
+import UserAdminVolunteers from './components/UserAdminVolunteers'
+import UserAdminComments from './components/UserAdminComments'
 
 class App extends Component {
   render() {
@@ -34,33 +35,16 @@ class App extends Component {
           <Route exact path="/List/:searchingWord" component={LocalList} />
           <Route exact path="/Admin/Local/:idUser" component={AddLocal} />
           <Route exact path="/Admin/:idUser" component={UserAdmin} />
-          {/* <Route
-            path="/logout"
-            render={() => {
-              auth.logout()
-
-              return <p />
-            }}
-          />
-
           <Route
-            path="/callback"
-            render={() => {
-              auth.handleAuthentication(() => {
-                // // NOTE: Uncomment the following lines if you are using axios
-
-                // //
-
-                // // Set the axios authentication headers
-
-                axios.defaults.headers.common = {
-                  Authorization: auth.authorizationHeader()
-                }
-              })
-
-              return <p />
-            }}
-          /> */}
+            exact
+            path="/Admin/Volunteers/:idLocal"
+            component={UserAdminVolunteers}
+          />
+          <Route
+            exact
+            path="/Admin/Comments/:idLocal"
+            component={UserAdminComments}
+          />
         </Switch>
       </Router>
     )

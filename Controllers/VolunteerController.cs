@@ -9,6 +9,7 @@ using content;
 using migo.Pages.Model;
 using Microsoft.Extensions.Options;
 using content.ImageHelper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace content.Controllers
 {
@@ -109,6 +110,7 @@ namespace content.Controllers
 
     // DELETE: api/Volunteer/5
     [HttpDelete("{id}")]
+    [Authorize]
     public async Task<ActionResult<Volunteer>> DeleteVolunteer(int id)
     {
       var volunteer = await _context.Volunteers.FindAsync(id);

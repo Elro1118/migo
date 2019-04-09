@@ -26,6 +26,15 @@ class UserAdmin extends Component {
         }
       })
   }
+
+  deleteLocal = event => {
+    axios.delete(`/api/Local/${event.target.value}`).then(resp => {
+      if (resp.status === 200) {
+        this.getLocals()
+      }
+    })
+  }
+
   render() {
     return (
       <div className="main-LocalList">
@@ -68,19 +77,23 @@ class UserAdmin extends Component {
                           m.zipcode}
                       </td>
                       <td>
-                        <Link to={`/List/Detail/${m.id}`} className="link">
+                        <Link to={`/Admin/Volunteers/${m.id}`} className="link">
                           <i className="fas fa-info-circle" />
                         </Link>
                       </td>
                       <td>
-                        <Link to={`/List/Detail/${m.id}`} className="link">
+                        <Link to={`/Admin/Comments/${m.id}`} className="link">
                           <i className="fas fa-info-circle" />
                         </Link>
                       </td>
                       <td>
-                        <Link to={`/List/Detail/${m.id}`} className="link">
-                          <i className="fas fa-info-circle" />
-                        </Link>
+                        <button
+                          className="btn btn-danger"
+                          value={m.id}
+                          onClick={this.deleteLocal}
+                        >
+                          Delete
+                        </button>
                       </td>
                     </tr>
                   )

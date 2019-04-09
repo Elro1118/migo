@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using content;
 using migo.Pages.Model;
+using Microsoft.AspNetCore.Authorization;
 
 namespace content.Controllers
 {
@@ -33,6 +34,21 @@ namespace content.Controllers
     public async Task<ActionResult<Local>> GetLocal(int id)
     {
       var local = await _context.Locals.FindAsync(id);
+
+      if (local == null)
+      {
+        return NotFound();
+      }
+
+      return local;
+    }
+
+    // GET: api/Local/clientId/
+    [HttpGet("ClientId/{id}")]
+    // [Authorize]
+    public async Task<ActionResult<List<Local>>> GetLocalsForClient(int id)
+    {
+      var local = await _context.Locals.Where(w => w.ClientId == id).OrderBy(o => o.Name).ToListAsync();
 
       if (local == null)
       {
@@ -74,6 +90,7 @@ namespace content.Controllers
 
     // POST: api/Local
     [HttpPost]
+    [Authorize]
     public async Task<ActionResult<Local>> PostLocal(Local local)
     {
       _context.Locals.Add(local);

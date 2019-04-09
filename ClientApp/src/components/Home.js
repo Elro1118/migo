@@ -66,8 +66,8 @@ class Home extends Component {
               <Link to={`User`}>
                 <button className="sign-up-button">Sign Up</button>
               </Link>
-              <Link to={`/Local/1`}>
-                <button className="sign-up-button">Local</button>
+              <Link to={`/Admin/1`}>
+                <button className="sign-up-button">Admin</button>
               </Link>
             </div>
             {/* DO NOT DELETE IT */}

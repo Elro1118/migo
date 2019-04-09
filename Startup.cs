@@ -10,6 +10,11 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Swagger;
 using content.ImageHelper;
+using migo.Services.Settings;
+using migo.Services;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
 
 namespace content
 {
@@ -27,12 +32,22 @@ namespace content
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+
+      var authSettings = Configuration.GetSection("Auth");
+
+      services.Configure<AuthSettings>(authSettings);
+
+      services.AddTransient<IAuthService, AuthService>();
+
+      services.AddTransient<IUserService, UserService>();
+
+      services.AddDbContext<DatabaseContext>();
+
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
        .AddJsonOptions(options =>
       {
         options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
       });
-
 
       services.AddHealthChecks();
       // Register the Swagger generator, defining 1 or more Swagger documents
@@ -46,6 +61,34 @@ namespace content
       {
         configuration.RootPath = "ClientApp/build";
       });
+
+      services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+
+               .AddJwtBearer(options =>
+
+               {
+
+                 options.TokenValidationParameters = new TokenValidationParameters
+
+                 {
+
+                   ValidateIssuer = false,
+
+                   ValidateAudience = false,
+
+                   ValidateLifetime = true,
+
+                   ValidateIssuerSigningKey = true,
+
+                   IssuerSigningKey = new SymmetricSecurityKey(
+
+                    Encoding.UTF8.GetBytes("bRhYJRlZvBj2vW4MrV5HVdPgIE6VMtCFB0kTtJ1m")
+
+                )
+
+                 };
+
+               });
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,6 +114,11 @@ namespace content
       {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
       });
+
+      app.UseAuthentication();
+      app.UseStaticFiles();
+      app.UseSpaStaticFiles();
+
       app.UseStaticFiles();
       app.UseSpaStaticFiles();
       app.UseMvc(routes =>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import Home from './components/Home'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+// import axios from 'axios'
+import Home from './components/Home'
 import VolunteerRegistration from './components/VolunteerRegistration'
 import CommentRegistration from './components/CommentRegistration'
 import LocalDetail from './components/LocalDetail'
@@ -8,7 +9,9 @@ import UserRegistration from './components/UserRegistration'
 import LogIn from './components/LogIn'
 import LocalList from './components/LocalList'
 import AddLocal from './components/AddLocal'
-// import UserSession from './components/UserSession'
+import UserAdmin from './components/UserAdmin'
+// import auth from './Auth'
+
 class App extends Component {
   render() {
     return (
@@ -29,8 +32,35 @@ class App extends Component {
           <Route exact path="/User" component={UserRegistration} />
           <Route exact path="/LogIn" component={LogIn} />
           <Route exact path="/List/:searchingWord" component={LocalList} />
-          <Route exact path="/Local/:idUser" component={AddLocal} />
-          {/* <Route exact path="/LoginIn/:idUser" component={UserSession} /> */}
+          <Route exact path="/Admin/Local/:idUser" component={AddLocal} />
+          <Route exact path="/Admin/:idUser" component={UserAdmin} />
+          {/* <Route
+            path="/logout"
+            render={() => {
+              auth.logout()
+
+              return <p />
+            }}
+          />
+
+          <Route
+            path="/callback"
+            render={() => {
+              auth.handleAuthentication(() => {
+                // // NOTE: Uncomment the following lines if you are using axios
+
+                // //
+
+                // // Set the axios authentication headers
+
+                axios.defaults.headers.common = {
+                  Authorization: auth.authorizationHeader()
+                }
+              })
+
+              return <p />
+            }}
+          /> */}
         </Switch>
       </Router>
     )

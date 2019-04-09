@@ -62,7 +62,6 @@ namespace content.Controllers
       return volunteer;
     }
 
-
     // PUT: api/Volunteer/5
     [HttpPut("{id}")]
     public async Task<IActionResult> PutVolunteer(int id, Volunteer volunteer)

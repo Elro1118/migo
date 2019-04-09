@@ -42,6 +42,7 @@ namespace content.Controllers
       return client;
     }
 
+
     // PUT: api/Client/5
     [HttpPut("{id}")]
     public async Task<IActionResult> PutClient(int id, Client client)

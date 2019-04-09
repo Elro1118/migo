@@ -1,25 +1,63 @@
 import React, { Component } from 'react'
 import NavigationHome from './NavigationHome'
-import { Link } from 'react-router-dom'
+import axios from 'axios'
+import Form from 'react-jsonschema-form'
+
 class LogIn extends Component {
+  state = {
+    formSchema: {
+      title: 'Sign In',
+      type: 'object',
+      required: ['email', 'password'],
+      properties: {
+        email: {
+          type: 'string',
+          title: 'Email',
+          format: 'email',
+          default: 'migo@migo.com'
+        },
+        password: {
+          type: 'string',
+          title: 'Your password',
+          maxLength: 10,
+          default: ''
+        }
+      }
+    },
+    uiSchema: {
+      password: {
+        'ui:widget': 'password'
+      }
+    },
+    requestStatus: 0,
+    session: {}
+  }
+
+  onSubmit = event => {
+    axios.post('/auth/login', event.formData).then(resp => {
+      if (resp.status === 200) {
+        this.setState({ requestStatus: resp.status, session: resp.data })
+        localStorage.setItem('myUserId', parseInt(resp.data.id, 10))
+        localStorage.setItem('myUserToken', resp.data.token)
+        localStorage.setItem(
+          'myUserTokenExpirationTime',
+          JSON.parse(resp.data.tokenExpirationTime)
+        )
+        this.props.history.push(`/Admin/${localStorage.getItem('myUserId')}`)
+      }
+    })
+  }
+
   render() {
     return (
       <div>
-        <NavigationHome title="Log In" />
-        <div className="form-log-in">
-          <h1>Log In</h1>
-          <form action="">
-            <div className="form-row">
-              <input type="text" placeholder="Email address" />
-            </div>
-            <div className="form-row">
-              <input type="text" placeholder="Password" />
-            </div>
-          </form>
-          <Link to={`/LoginIn/1`}>
-            <button>Log In</button>
-          </Link>
-        </div>
+        <NavigationHome />
+        <Form
+          className="form-section"
+          schema={this.state.formSchema}
+          uiSchema={this.state.uiSchema}
+          onSubmit={this.onSubmit}
+        />
       </div>
     )
   }

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using content;
@@ -9,9 +10,10 @@ using content;
 namespace content.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20190409054119_AddPasswordDateClientTable")]
+    partial class AddPasswordDateClientTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,7 +32,7 @@ namespace content.Migrations
 
                     b.Property<string>("Email");
 
-                    b.Property<DateTime?>("LastLoggedIn");
+                    b.Property<DateTime>("LastLoggedIn");
 
                     b.Property<string>("Name");
 

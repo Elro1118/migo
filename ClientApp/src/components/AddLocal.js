@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Form from 'react-jsonschema-form'
-import NavigationList from './NavigationList'
+import NavigationAdmin from './NavigationAdmin'
 
 class AddLocal extends Component {
   state = {
@@ -68,21 +68,28 @@ class AddLocal extends Component {
   }
 
   onSubmit = event => {
-    axios.post('/api/Local', event.formData).then(resp => {
-      if (resp.status === 201) {
-        this.setState({ requestStatus: resp.status })
-      }
-    })
+    // add the token this request in the header
+    axios
+      .post('/api/Local', event.formData, {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('myUserToken')
+        }
+      })
+      .then(resp => {
+        if (resp.status === 201) {
+          this.setState({ requestStatus: resp.status })
+        }
+      })
   }
-
   render() {
     return (
       <div>
-        <NavigationList />
+        <NavigationAdmin />
         {this.state.requestStatus === 201 ? (
           <div className="alert alert-success" role="alert">
             Migo added successfully. Click it if you would like to go{' '}
-            <Link to={`/List/${localStorage.getItem('myWord')}`}>List</Link>.
+            <Link to={`/Admin/${localStorage.getItem('myUserId')}`}>Admin</Link>
+            .
           </div>
         ) : (
           <Form

@@ -108,9 +108,9 @@ class AddLocal extends Component {
         <NavigationAdmin />
         {this.state.requestStatus === 201 ? (
           <div className="alert alert-success" role="alert">
-            Migo added successfully. Click it if you would like to go{' '}
-            <Link to={`/Admin/${localStorage.getItem('myUserId')}`}>Admin</Link>
-            .
+            Migo added the place successfully. Click{' '}
+            <Link to={`/Admin/${localStorage.getItem('myUserId')}`}>here</Link>{' '}
+            if you would like to go manage places.
           </div>
         ) : (
           <Form

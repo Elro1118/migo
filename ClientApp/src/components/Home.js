@@ -36,7 +36,7 @@ class Home extends Component {
               <h1>MIGO!</h1>
               <p>
                 Hi friends! I will help you search for places where you can take
-                free English classes and improve your talking skills.
+                free English classes and improve your speaking skill.
               </p>
             </div>
             <div className="language-section">

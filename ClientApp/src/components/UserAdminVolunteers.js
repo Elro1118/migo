@@ -94,9 +94,9 @@ class UserAdminVolunteers extends Component {
           </div>
         ) : (
           <div className="alert alert-info" role="alert">
-            Migo couldn't fine results for you. Click it if you would like to go{' '}
-            <Link to={`/Admin/${localStorage.getItem('myUserId')}`}>Admin</Link>
-            .
+            Migo couldn't fine results for you. Click{' '}
+            <Link to={`/Admin/${localStorage.getItem('myUserId')}`}>here</Link>{' '}
+            if you would like to go manage places.
           </div>
         )}
       </div>

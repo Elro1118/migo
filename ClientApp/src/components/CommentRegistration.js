@@ -60,8 +60,9 @@ class CommentRegistration extends Component {
         <NavigationList />
         {this.state.requestStatus === 201 ? (
           <div className="alert alert-success" role="alert">
-            Migo added successfully. Click it if you would like to go{' '}
-            <Link to={`/List/${localStorage.getItem('myWord')}`}>List</Link>.
+            Migo added the comment successfully. Click{' '}
+            <Link to={`/List/${localStorage.getItem('myWord')}`}>here</Link> if
+            you would like to go List of Places Teach English.
           </div>
         ) : (
           <Form

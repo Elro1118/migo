@@ -87,14 +87,16 @@ class VolunteerRegistration extends Component {
         <NavigationList />
         {this.state.requestStatus === 201 ? (
           <div className="alert alert-success" role="alert">
-            Migo added successfully. Click it if you would like to go{' '}
-            <Link to={`/List/${localStorage.getItem('myWord')}`}>List</Link>.
+            Migo added the volunteer successfully. Click{' '}
+            <Link to={`/List/${localStorage.getItem('myWord')}`}>here</Link> if
+            you would like to go manage places.
           </div>
         ) : this.state.requestStatus === 1 ? (
           <div class="alert alert-danger" role="alert">
-            You should choose an image file. Click it if you would like to go{' '}
+            You should choose an image file. If you would like to try again,
+            click
             <button type="button" onClick={this.resetPage} class="btn btn-link">
-              Add a new volunteer for teaching
+              here.
             </button>
             .
           </div>

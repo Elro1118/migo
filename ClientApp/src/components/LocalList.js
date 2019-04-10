@@ -100,8 +100,8 @@ class LocalList extends Component {
           </div>
         ) : (
           <div className="alert alert-info" role="alert">
-            Migo couldn't fin results for you. Click it if you would like to go{' '}
-            <Link to={`/`}>Home</Link>.
+            Migo couldn't fin results for you. Click <Link to={`/`}>here</Link>{' '}
+            if you would like to go home.
           </div>
         )}
       </div>

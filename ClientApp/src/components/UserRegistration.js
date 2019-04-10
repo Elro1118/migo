@@ -73,6 +73,10 @@ class UserRegistration extends Component {
     session: {}
   }
 
+  resetPage = () => {
+    this.setState({ requestStatus: 0 })
+  }
+
   onSubmit = event => {
     axios
       .post('/auth/register', event.formData)
@@ -93,13 +97,16 @@ class UserRegistration extends Component {
         <NavigationHome />
         {this.state.requestStatus === 200 ? (
           <div className="alert alert-success" role="alert">
-            Migo created your user successfully. Click it if you would like to
-            go <Link to={`/LogIn`}>Login</Link>.
+            Migo created your user successfully. Click{' '}
+            <Link to={`/LogIn`}>here</Link> if you would like to go log in.
           </div>
         ) : this.state.requestStatus === 400 ? (
-          <div className="alert alert-dangers" role="alert">
-            {this.state.message.toUpperCase()}. Click it if you would like to go{' '}
-            <Link to={`/`}>Home</Link>.
+          <div class="alert alert-danger" role="alert">
+            {this.state.message.toUpperCase()}. If you would like to try again,
+            click
+            <button type="button" onClick={this.resetPage} class="btn btn-link">
+              here.
+            </button>
           </div>
         ) : (
           <Form

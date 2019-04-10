@@ -105,8 +105,8 @@ search-city-section-2 {
 /* LocalList component begins */
 .search-city-section-2 {
   display: flex;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+
+  margin: 1rem;
 }
 .search-city-section-2 input {
   flex: 7;

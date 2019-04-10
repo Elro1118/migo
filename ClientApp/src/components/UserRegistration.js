@@ -69,13 +69,14 @@ class UserRegistration extends Component {
   }
 
   onSubmit = event => {
-    axios.post('/auth/register', event.formData).then(resp => {
-      console.log(resp)
-
-      if (resp.status === 200) {
+    axios
+      .post('/auth/register', event.formData)
+      .then(resp => {
         this.setState({ requestStatus: resp.status, session: resp.data })
-      }
-    })
+      })
+      .catch(error => {
+        console.log(error.response.data)
+      })
   }
 
   render() {
@@ -86,6 +87,12 @@ class UserRegistration extends Component {
           <div className="alert alert-success" role="alert">
             Migo added successfully. Click it if you would like to go{' '}
             <Link to={`/LogIn`}>Login</Link>.
+          </div>
+        ) : this.state.requestStatus === 400 ? (
+          <div className="alert alert-dangers" role="alert">
+            {this.state.requestStatus}
+            <p>yrdyyyyy</p>
+            <Link to={`/`}>Home</Link>.
           </div>
         ) : (
           <Form

@@ -66,9 +66,6 @@ class Home extends Component {
               <Link to={`User`}>
                 <button className="sign-up-button">Sign Up</button>
               </Link>
-              <Link to={`/Admin/1`}>
-                <button className="sign-up-button">Admin</button>
-              </Link>
             </div>
             {/* DO NOT DELETE IT */}
             {/* <p>{this.state.selectedLanguage}</p>

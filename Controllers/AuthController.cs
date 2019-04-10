@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Mvc;
 
 using Microsoft.EntityFrameworkCore;
 using content;
+using System.Net.Http;
+using System.Net;
 
 namespace migo.Controllers
 {
@@ -91,14 +93,14 @@ namespace migo.Controllers
 
       var alreadyExists = await this.db.Clients.AnyAsync(a => a.Email == model.Email);
 
-      if (alreadyExists) return BadRequest(new { username = "user with this email already exists" });
+      //if (alreadyExists) return BadRequest(new { email = "user with this email already exists" });
+      if (alreadyExists) return BadRequest(new { email = "user with this email already exists" });
 
       var user = new Client
       {
         Email = model.Email,
         Name = model.Name,
-        Telephone = model.Phone,
-        DateCreated = model.DateCreated,
+        Telephone = model.Telephone,
         RolId = model.RolId,
         Active = model.Active
       };

@@ -11,9 +11,7 @@ namespace migo.ViewModels
     [Required]
     public string Password { get; set; }
     public string Name { get; set; }
-    public string Phone { get; set; }
-    public DateTime DateCreated { get; set; } = DateTime.Now;
-
+    public string Telephone { get; set; }
     public int RolId { get; set; } = 1;
     public bool Active { get; set; } = true;
 

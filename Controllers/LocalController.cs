@@ -45,7 +45,7 @@ namespace content.Controllers
 
     // GET: api/Local/clientId/
     [HttpGet("ClientId/{id}")]
-    // [Authorize]
+    [Authorize]
     public async Task<ActionResult<List<Local>>> GetLocalsForClient(int id)
     {
       var local = await _context.Locals.Where(w => w.ClientId == id).OrderBy(o => o.Name).ToListAsync();

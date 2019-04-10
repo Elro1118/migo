@@ -38,10 +38,11 @@ class LogIn extends Component {
       if (resp.status === 200) {
         this.setState({ requestStatus: resp.status, session: resp.data })
         localStorage.setItem('myUserId', parseInt(resp.data.id, 10))
+        localStorage.setItem('userName', resp.data.userName)
         localStorage.setItem('myUserToken', resp.data.token)
         localStorage.setItem(
           'myUserTokenExpirationTime',
-          JSON.parse(resp.data.tokenExpirationTime)
+          resp.data.tokenExpirationTime
         )
         this.props.history.push(`/Admin/${localStorage.getItem('myUserId')}`)
       }

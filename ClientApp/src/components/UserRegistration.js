@@ -75,7 +75,10 @@ class UserRegistration extends Component {
         this.setState({ requestStatus: resp.status, session: resp.data })
       })
       .catch(error => {
-        console.log(error.response.data)
+        this.setState({
+          requestStatus: error.response.status,
+          message: error.response.data.email
+        })
       })
   }
 
@@ -90,8 +93,7 @@ class UserRegistration extends Component {
           </div>
         ) : this.state.requestStatus === 400 ? (
           <div className="alert alert-dangers" role="alert">
-            {this.state.requestStatus}
-            <p>yrdyyyyy</p>
+            {this.state.message.toUpperCase()}. Click it if you would like to go{' '}
             <Link to={`/`}>Home</Link>.
           </div>
         ) : (

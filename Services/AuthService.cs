@@ -98,7 +98,9 @@ namespace migo.Services
 
         TokenExpirationTime = ((DateTimeOffset)expirationTime).ToUnixTimeSeconds(),
 
-        Id = user.Id
+        Id = user.Id,
+
+        UserName = user.Name
 
       };
 

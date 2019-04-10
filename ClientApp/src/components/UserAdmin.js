@@ -16,7 +16,11 @@ class UserAdmin extends Component {
 
   getLocals = () => {
     axios
-      .get(`/api/Local/ClientId/${localStorage.getItem('myUserId')}`)
+      .get(`/api/Local/ClientId/${localStorage.getItem('myUserId')}`, {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('myUserToken')
+        }
+      })
       .then(resp => {
         if (resp.status === 200) {
           this.setState({
@@ -34,6 +38,17 @@ class UserAdmin extends Component {
       }
     })
   }
+  logOut = () => {
+    localStorage.removeItem('myUserId')
+
+    localStorage.removeItem('userName')
+
+    localStorage.removeItem('myUserToken')
+
+    localStorage.removeItem('myUserTokenExpirationTime')
+
+    this.props.history.push(`/`)
+  }
 
   render() {
     return (
@@ -44,11 +59,13 @@ class UserAdmin extends Component {
           <ul>
             <li>
               <Link to={`/Admin/Local/${localStorage.getItem('myUserId')}`}>
-                Add
+                Add Local
               </Link>
             </li>
 
-            <li>User Name(LogOut)</li>
+            <li onClick={this.logOut}>
+              {localStorage.getItem('userName')}(Log Out)
+            </li>
           </ul>
         </nav>
         {this.state.locals.length > 0 && this.state.requestStatus === 200 ? (

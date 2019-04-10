@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-
 import NavigationHome from './NavigationHome'
 
 class LocalList extends Component {
   state = {
+    searchingWord: this.props.match.params.searchingWord,
     requestStatus: 0,
     locals: []
   }
@@ -16,22 +16,36 @@ class LocalList extends Component {
 
   getLocals = () => {
     axios
-      .get(`/api/Search/locals?query=${this.props.match.params.searchingWord}`)
+      .get(`/api/Search/locals?query=${this.state.searchingWord}`)
       .then(resp => {
-        if (resp.status === 200) {
-          this.setState({
-            requestStatus: resp.status,
-            locals: resp.data.results
-          })
-          localStorage.setItem('myWord', this.props.match.params.searchingWord)
-        }
+        this.setState({
+          requestStatus: resp.status,
+          locals: resp.data.results
+        })
+        localStorage.setItem('myWord', this.state.searchingWord)
       })
   }
+  handleChanged = event => {
+    this.setState({ searchingWord: event.target.value })
+  }
+
   render() {
     return (
       <div className="main-LocalList">
         <NavigationHome />
-        <h1>Local List</h1>
+        <h1>List of Places Teach English</h1>
+        <div className="search-city-section-2">
+          <input
+            className="text-section"
+            type="text"
+            placeholder="Enter city or zip code"
+            value={this.state.searchingWord}
+            onChange={this.handleChanged}
+          />
+          <button className="button-section" onClick={this.getLocals}>
+            Search
+          </button>
+        </div>
         {this.state.locals.length > 0 && this.state.requestStatus === 200 ? (
           <div className="table-responsive">
             <table className="table">
@@ -60,7 +74,8 @@ class LocalList extends Component {
                       </td>
                       <td>
                         <Link to={`/List/Detail/${m.id}`} className="link">
-                          <i className="fas fa-info-circle" />
+                          {/* <i className="fas fa-info-circle" /> */}
+                          More detail
                         </Link>
                       </td>
                       <td>
@@ -85,7 +100,7 @@ class LocalList extends Component {
           </div>
         ) : (
           <div className="alert alert-info" role="alert">
-            Migo couldn't fine results for you. Click it if you would like to go{' '}
+            Migo couldn't fin results for you. Click it if you would like to go{' '}
             <Link to={`/`}>Home</Link>.
           </div>
         )}

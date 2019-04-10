@@ -7,7 +7,7 @@ import NavigationAdmin from './NavigationAdmin'
 class AddLocal extends Component {
   state = {
     formSchema: {
-      title: 'Add a new local',
+      title: 'Add a new place teaches English',
       type: 'object',
       required: ['name', 'address', 'city', 'state', 'zipcode', 'schedule'],
       properties: {
@@ -19,32 +19,44 @@ class AddLocal extends Component {
         name: {
           type: 'string',
           title: 'Name',
-          default: 'Full name'
+          minLength: 1,
+          maxLength: 150,
+          default: ''
         },
         address: {
           type: 'string',
           title: 'Address',
+          minLength: 1,
+          maxLength: 100,
           default: ''
         },
         city: {
           type: 'string',
           title: 'City',
-          default: 'Saint Petersburg'
+          minLength: 1,
+          maxLength: 50,
+          default: ''
         },
         state: {
           type: 'string',
           title: 'State',
-          default: 'Florida'
+          minLength: 1,
+          maxLength: 50,
+          default: ''
         },
         zipcode: {
           type: 'number',
           title: 'Zip code',
+          minLength: 5,
+          maxLength: 5,
           default: ''
         },
         schedule: {
           type: 'string',
           title: 'Schedule',
-          default: 'schedule'
+          minLength: 1,
+          maxLength: 300,
+          default: ''
         },
         active: {
           type: 'boolean',
@@ -62,7 +74,18 @@ class AddLocal extends Component {
       id: { 'ui:widget': 'hidden' },
       active: { 'ui:widget': 'hidden' },
       clientId: { 'ui:widget': 'hidden' },
-      schedule: { 'ui:widget': 'textarea' }
+      schedule: {
+        'ui:widget': 'textarea',
+        'ui:options': {
+          rows: 2
+        },
+        'ui:placeholder': 'Enter schedule'
+      },
+      name: { 'ui:placeholder': 'Enter name' },
+      address: { 'ui:placeholder': 'Enter address' },
+      city: { 'ui:placeholder': 'Enter city' },
+      state: { 'ui:placeholder': 'Enter state' },
+      zipcode: { 'ui:placeholder': 'Enter zip code' }
     },
     requestStatus: 0
   }
@@ -76,9 +99,7 @@ class AddLocal extends Component {
         }
       })
       .then(resp => {
-        if (resp.status === 201) {
-          this.setState({ requestStatus: resp.status })
-        }
+        this.setState({ requestStatus: resp.status })
       })
   }
   render() {

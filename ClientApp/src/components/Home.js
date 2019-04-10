@@ -24,10 +24,6 @@ class Home extends Component {
   render() {
     return (
       <section className="home-container">
-        <link
-          href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Open+Sans"
-          rel="stylesheet"
-        />
         <div className="main-section">
           <img
             src={homePicture}
@@ -39,8 +35,8 @@ class Home extends Component {
             <div className="resume">
               <h1>MIGO!</h1>
               <p>
-                Hi friends! I will help you to search for places where you can
-                take free English classes and improve your talking skills.
+                Hi friends! I will help you search for places where you can take
+                free English classes and improve your talking skills.
               </p>
             </div>
             <div className="language-section">
@@ -51,7 +47,7 @@ class Home extends Component {
               <input
                 className="text-section"
                 type="text"
-                placeholder="Enter city or zipcode"
+                placeholder="Enter city or zip code"
                 value={this.state.searchingWord}
                 onChange={this.handleChanged}
               />

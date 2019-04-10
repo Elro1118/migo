@@ -7,7 +7,7 @@ import NavigationList from './NavigationList'
 class CommentRegistration extends Component {
   state = {
     formSchema: {
-      title: 'Add a new comment',
+      title: 'Add a new comment for the place',
       type: 'object',
       required: ['description'],
       properties: {
@@ -19,7 +19,7 @@ class CommentRegistration extends Component {
         description: {
           type: 'string',
           title: 'Comment',
-          default: 'A penny for your thought'
+          default: ''
         },
         active: {
           type: 'boolean',
@@ -37,18 +37,20 @@ class CommentRegistration extends Component {
       id: { 'ui:widget': 'hidden' },
       active: { 'ui:widget': 'hidden' },
       localId: { 'ui:widget': 'hidden' },
-      description: { 'ui:widget': 'textarea' }
+      description: {
+        'ui:widget': 'textarea',
+        'ui:placeholder': 'A penny for your thought',
+        'ui:options': {
+          rows: 2
+        }
+      }
     },
     requestStatus: 0
   }
 
   onSubmit = event => {
     axios.post('/api/Comment', event.formData).then(resp => {
-      console.log(resp)
-
-      if (resp.status === 201) {
-        this.setState({ requestStatus: resp.status })
-      }
+      this.setState({ requestStatus: resp.status })
     })
   }
 

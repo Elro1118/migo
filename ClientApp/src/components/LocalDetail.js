@@ -17,27 +17,21 @@ class LocalDetail extends Component {
 
   getLocal = () => {
     axios.get(`/api/Local/${this.props.match.params.idLocal}`).then(resp => {
-      if (resp.status === 200) {
-        this.setState({ requestStatus: resp.status, local: resp.data })
-      }
+      this.setState({ requestStatus: resp.status, local: resp.data })
     })
   }
   getComments = () => {
     axios
       .get(`/api/Comment/LocalId/${this.props.match.params.idLocal}`)
       .then(resp => {
-        if (resp.status === 200) {
-          this.setState({ requestStatus: resp.status, comments: resp.data })
-        }
+        this.setState({ requestStatus: resp.status, comments: resp.data })
       })
   }
   getVolunteers = () => {
     axios
       .get(`/api/Volunteer/LocalId/${this.props.match.params.idLocal}`)
       .then(resp => {
-        if (resp.status === 200) {
-          this.setState({ requestStatus: resp.status, volunteers: resp.data })
-        }
+        this.setState({ requestStatus: resp.status, volunteers: resp.data })
       })
   }
 
@@ -72,7 +66,12 @@ class LocalDetail extends Component {
               <h2>Volunteers</h2>
               <div className="frame-picture">
                 {this.state.volunteers.map((m, i) => {
-                  return <img key={i} src={m.photo} alt={m.name} />
+                  return (
+                    <figure key={i}>
+                      <img src={m.photo} alt={m.name} />
+                      <figcaption>{m.name}</figcaption>
+                    </figure>
+                  )
                 })}
               </div>
             </div>

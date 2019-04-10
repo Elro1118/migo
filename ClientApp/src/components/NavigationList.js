@@ -5,8 +5,14 @@ class NavigationList extends Component {
     return (
       <div>
         <h5>
-          <Link to={`/`}>Home</Link> /{' '}
-          <Link to={`/List/${localStorage.getItem('myWord')}`}> List</Link>
+          <Link to={`/`} className="link">
+            Home
+          </Link>{' '}
+          /{' '}
+          <Link to={`/List/${localStorage.getItem('myWord')}`} className="link">
+            {' '}
+            List
+          </Link>
         </h5>
       </div>
     )

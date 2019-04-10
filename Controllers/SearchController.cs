@@ -33,7 +33,7 @@ namespace content.Controllers
       }
       else
       {
-        results = db.Locals.Where(w => w.City.ToLower().Contains(query));
+        results = db.Locals.Where(w => w.City.ToLower().Contains(query) || w.State.ToLower().Contains(query));
       }
       return Ok(new { SearchingFor = query, results = results, checkingForZipCode });
     }

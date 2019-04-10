@@ -39,7 +39,7 @@ class UserAdminComments extends Component {
     return (
       <div className="main-LocalList">
         <NavigationAdmin />
-        <h1>volunteers Admin</h1>
+        <h1>Manage Comments</h1>
         {this.state.comments.length > 0 && this.state.requestStatus === 200 ? (
           <div className="table-responsive">
             <table className="table">

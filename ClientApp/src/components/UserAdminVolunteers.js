@@ -45,7 +45,7 @@ class UserAdminVolunteers extends Component {
     return (
       <div className="main-LocalList">
         <NavigationAdmin />
-        <h1>volunteers Admin</h1>
+        <h1>Manage Volunteers</h1>
         {this.state.volunteers.length > 0 &&
         this.state.requestStatus === 200 ? (
           <div className="table-responsive">

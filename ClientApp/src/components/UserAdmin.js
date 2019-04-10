@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-
 import NavigationAdmin from './NavigationAdmin'
 
 class UserAdmin extends Component {
@@ -22,12 +21,10 @@ class UserAdmin extends Component {
         }
       })
       .then(resp => {
-        if (resp.status === 200) {
-          this.setState({
-            requestStatus: resp.status,
-            locals: resp.data
-          })
-        }
+        this.setState({
+          requestStatus: resp.status,
+          locals: resp.data
+        })
       })
   }
 
@@ -54,20 +51,23 @@ class UserAdmin extends Component {
     return (
       <div className="main-LocalList">
         <NavigationAdmin />
-        <h1>Migo Admin</h1>
+        <h1>Manage Places</h1>
         <nav>
           <ul>
             <li>
-              <Link to={`/Admin/Local/${localStorage.getItem('myUserId')}`}>
-                Add Local
+              <Link
+                to={`/Admin/Local/${localStorage.getItem('myUserId')}`}
+                className="link"
+              >
+                <h3>Add Local</h3>
               </Link>
             </li>
-
             <li onClick={this.logOut}>
-              {localStorage.getItem('userName')}(Log Out)
+              <h3>{localStorage.getItem('userName')}(Log Out)</h3>
             </li>
           </ul>
         </nav>
+
         {this.state.locals.length > 0 && this.state.requestStatus === 200 ? (
           <div className="table-responsive">
             <table className="table">
@@ -95,12 +95,12 @@ class UserAdmin extends Component {
                       </td>
                       <td>
                         <Link to={`/Admin/Volunteers/${m.id}`} className="link">
-                          <i className="fas fa-info-circle" />
+                          More detail
                         </Link>
                       </td>
                       <td>
                         <Link to={`/Admin/Comments/${m.id}`} className="link">
-                          <i className="fas fa-info-circle" />
+                          More detail
                         </Link>
                       </td>
                       <td>
@@ -124,8 +124,8 @@ class UserAdmin extends Component {
           </div>
         ) : (
           <div className="alert alert-info" role="alert">
-            Migo couldn't fine results for you. Click it if you would like to go{' '}
-            <Link to={`/`}>Home</Link>.
+            Migo could not find places to manage. You should add a place to
+            manage.
           </div>
         )}
       </div>

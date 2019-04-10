@@ -21,27 +21,28 @@ class UserRegistration extends Component {
           title: 'Name',
           maxLength: 150,
           minLength: 1,
-          default: 'Full name'
+          default: ''
         },
         telephone: {
           type: 'string',
           title: 'Telephone',
-          maxLength: 10,
-          minLength: 10,
+          maxLength: 12,
+          minLength: 12,
           pattern: '^[0-9()\\-\\.\\s]+$',
           default: ''
         },
-        password: {
-          type: 'string',
-          title: 'Your password',
-          maxLength: 10,
-          default: ''
-        },
+
         email: {
           type: 'string',
           title: 'Email',
           format: 'email',
-          default: 'migo@migo.com'
+          default: ''
+        },
+        password: {
+          type: 'string',
+          title: 'Password',
+          minLength: 10,
+          default: ''
         },
         active: {
           type: 'boolean',
@@ -61,8 +62,12 @@ class UserRegistration extends Component {
       rolId: { 'ui:widget': 'hidden' },
       password: {
         'ui:widget': 'password',
-        'ui:help': 'Hint: Make it strong!'
-      }
+        'ui:help': 'Hint: Make it strong!',
+        'ui:placeholder': 'Enter password'
+      },
+      name: { 'ui:placeholder': 'Enter name' },
+      telephone: { 'ui:placeholder': 'Enter telephone' },
+      email: { 'ui:placeholder': 'Enter email' }
     },
     requestStatus: 0,
     session: {}
@@ -88,8 +93,8 @@ class UserRegistration extends Component {
         <NavigationHome />
         {this.state.requestStatus === 200 ? (
           <div className="alert alert-success" role="alert">
-            Migo added successfully. Click it if you would like to go{' '}
-            <Link to={`/LogIn`}>Login</Link>.
+            Migo created your user successfully. Click it if you would like to
+            go <Link to={`/LogIn`}>Login</Link>.
           </div>
         ) : this.state.requestStatus === 400 ? (
           <div className="alert alert-dangers" role="alert">

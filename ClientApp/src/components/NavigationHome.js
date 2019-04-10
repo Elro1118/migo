@@ -6,7 +6,9 @@ class NavigationHome extends Component {
     return (
       <div>
         <h5>
-          <Link to={`/`}>Home</Link>
+          <Link to={`/`} className="link">
+            Home
+          </Link>
         </h5>
       </div>
     )

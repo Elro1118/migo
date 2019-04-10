@@ -14,12 +14,11 @@ class LogIn extends Component {
           type: 'string',
           title: 'Email',
           format: 'email',
-          default: 'migo@migo.com'
+          default: ''
         },
         password: {
           type: 'string',
           title: 'Your password',
-          maxLength: 10,
           default: ''
         }
       }
@@ -27,7 +26,8 @@ class LogIn extends Component {
     uiSchema: {
       password: {
         'ui:widget': 'password'
-      }
+      },
+      email: { 'ui:placeholder': 'Enter email' }
     },
     requestStatus: 0,
     session: {}
@@ -35,17 +35,15 @@ class LogIn extends Component {
 
   onSubmit = event => {
     axios.post('/auth/login', event.formData).then(resp => {
-      if (resp.status === 200) {
-        this.setState({ requestStatus: resp.status, session: resp.data })
-        localStorage.setItem('myUserId', parseInt(resp.data.id, 10))
-        localStorage.setItem('userName', resp.data.userName)
-        localStorage.setItem('myUserToken', resp.data.token)
-        localStorage.setItem(
-          'myUserTokenExpirationTime',
-          resp.data.tokenExpirationTime
-        )
-        this.props.history.push(`/Admin/${localStorage.getItem('myUserId')}`)
-      }
+      this.setState({ requestStatus: resp.status, session: resp.data })
+      localStorage.setItem('myUserId', parseInt(resp.data.id, 10))
+      localStorage.setItem('userName', resp.data.userName)
+      localStorage.setItem('myUserToken', resp.data.token)
+      localStorage.setItem(
+        'myUserTokenExpirationTime',
+        resp.data.tokenExpirationTime
+      )
+      this.props.history.push(`/Admin/${localStorage.getItem('myUserId')}`)
     })
   }
 

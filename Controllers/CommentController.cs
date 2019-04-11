@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using content;
 using migo.Pages.Model;
+using Microsoft.AspNetCore.Authorization;
 
 namespace content.Controllers
 {
@@ -99,6 +100,7 @@ namespace content.Controllers
 
     // DELETE: api/Comment/5
     [HttpDelete("{id}")]
+    [Authorize]
     public async Task<ActionResult<Comment>> DeleteComment(int id)
     {
       var comment = await _context.Comments.FindAsync(id);

@@ -70,7 +70,7 @@ class UserRegistration extends Component {
       email: { 'ui:placeholder': 'Enter email' }
     },
     requestStatus: 0,
-    session: {}
+    message: ''
   }
 
   resetPage = () => {
@@ -81,7 +81,7 @@ class UserRegistration extends Component {
     axios
       .post('/auth/register', event.formData)
       .then(resp => {
-        this.setState({ requestStatus: resp.status, session: resp.data })
+        this.setState({ requestStatus: resp.status })
       })
       .catch(error => {
         this.setState({
@@ -101,10 +101,14 @@ class UserRegistration extends Component {
             <Link to={`/LogIn`}>here</Link> if you would like to go log in.
           </div>
         ) : this.state.requestStatus === 400 ? (
-          <div class="alert alert-danger" role="alert">
+          <div className="alert alert-danger" role="alert">
             {this.state.message.toUpperCase()}. If you would like to try again,
             click
-            <button type="button" onClick={this.resetPage} class="btn btn-link">
+            <button
+              type="button"
+              onClick={this.resetPage}
+              className="btn btn-link"
+            >
               here.
             </button>
           </div>

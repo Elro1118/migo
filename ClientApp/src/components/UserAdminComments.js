@@ -28,11 +28,15 @@ class UserAdminComments extends Component {
   }
 
   deleteComment = event => {
-    axios.delete(`/api/Comment/${event.target.value}`).then(resp => {
-      if (resp.status === 200) {
+    axios
+      .delete(`/api/Comment/${event.target.value}`, {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('myUserToken')
+        }
+      })
+      .then(resp => {
         this.getComments()
-      }
-    })
+      })
   }
 
   render() {

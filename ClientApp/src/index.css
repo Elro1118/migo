@@ -63,8 +63,7 @@ body {
 .language-word {
   margin-top: 0.3rem;
 }
-.search-city-section,
-search-city-section-2 {
+.search-city-section {
   display: flex;
   margin: 1rem;
 }
@@ -105,8 +104,10 @@ search-city-section-2 {
 /* LocalList component begins */
 .search-city-section-2 {
   display: flex;
-
-  margin: 1rem;
+  margin-right: 5rem;
+  margin-left: 5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 .search-city-section-2 input {
   flex: 7;
@@ -118,6 +119,7 @@ search-city-section-2 {
 .main-LocalList h1 {
   text-align: center;
 }
+
 .table thead {
   background-color: #c991f3;
 }
@@ -134,7 +136,7 @@ search-city-section-2 {
 }
 
 /* LocalList component ends */
-/* Style to all forms begin */
+
 .form-row {
   padding: 0.5rem 0;
   display: flex;
@@ -348,9 +350,20 @@ h5 {
   }
   /* Detail components ends */
   /* LocalList components begins */
+  .main-LocalList h1 {
+    font-size: 1.3rem;
+  }
   .link:hover {
     color: #beb639;
     text-decoration: none;
   }
-  /* LocalList components ends */
+  /* LocalList component ends */
+  /* Forms style begin */
+  .form-section {
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+  /* Form style end */
+  /* UserAdmin component begins*/
+  /* UserAdmin component ends */
 }

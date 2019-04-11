@@ -101,6 +101,7 @@ namespace content.Controllers
 
     // DELETE: api/Local/5
     [HttpDelete("{id}")]
+    [Authorize]
     public async Task<ActionResult<Local>> DeleteLocal(int id)
     {
       var local = await _context.Locals.FindAsync(id);

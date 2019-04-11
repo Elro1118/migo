@@ -35,9 +35,7 @@ class UserAdminVolunteers extends Component {
         }
       })
       .then(resp => {
-        if (resp.status === 200) {
-          this.getVolunteers()
-        }
+        this.getVolunteers()
       })
   }
 

@@ -29,11 +29,15 @@ class UserAdmin extends Component {
   }
 
   deleteLocal = event => {
-    axios.delete(`/api/Local/${event.target.value}`).then(resp => {
-      if (resp.status === 200) {
+    axios
+      .delete(`/api/Local/${event.target.value}`, {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('myUserToken')
+        }
+      })
+      .then(resp => {
         this.getLocals()
-      }
-    })
+      })
   }
   logOut = () => {
     localStorage.removeItem('myUserId')

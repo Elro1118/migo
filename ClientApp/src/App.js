@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-// import axios from 'axios'
 import Home from './components/Home'
 import VolunteerRegistration from './components/VolunteerRegistration'
 import CommentRegistration from './components/CommentRegistration'

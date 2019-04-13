@@ -13,6 +13,9 @@ namespace migo.Pages.Model
     public string State { get; set; } = "Florida";
     public int Zipcode { get; set; }
     public string Schedule { get; set; }
+
+    public double? Latitude { get; set; } = null;
+    public double? Longitude { get; set; } = null;
     public bool Active { get; set; }
 
     //   Navegation properties

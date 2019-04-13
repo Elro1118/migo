@@ -10,7 +10,8 @@ html {
 
 body {
   margin: 0;
-  min-height: 100%;
+  min-height: 100px;
+  max-height: 100px;
   background-color: #fff;
 }
 
@@ -365,5 +366,23 @@ h5 {
   }
   /* Form style end */
   /* UserAdmin component begins*/
+  nav {
+    padding: 0;
+  }
+  nav ul {
+    padding: 0;
+  }
+  nav h3 {
+    font-size: 1rem;
+    margin: 0;
+  }
   /* UserAdmin component ends */
+}
+@media (orientation: landscape) {
+  .main-section img {
+    width: 5rem;
+    height: 100%;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 0;
+  }
 }

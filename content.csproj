@@ -11,6 +11,10 @@
 
   <ItemGroup>
     <PackageReference Include="Cloudinary.Core" Version="1.31.0" />
+    <PackageReference Include="Geocoding.Google" Version="4.0.1" />
+    <PackageReference Include="Geocoding.MapQuest" Version="4.0.1" />
+    <PackageReference Include="Geocoding.Microsoft" Version="4.0.1" />
+    <PackageReference Include="Geocoding.Yahoo" Version="4.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.0" />

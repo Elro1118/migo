@@ -35,8 +35,9 @@ class Home extends Component {
             <div className="resume">
               <h1>MIGO!</h1>
               <p>
-                Hi friends! I will help you search for places where you can take
-                free English classes and improve your speaking skill.
+                Hi friends! My name is Migo, and I will help you search for
+                places where you can take free English classes and improve your
+                speaking skill.
               </p>
             </div>
             <div className="language-section">

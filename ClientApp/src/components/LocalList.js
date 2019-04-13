@@ -51,8 +51,7 @@ class LocalList extends Component {
             <table className="table">
               <thead>
                 <tr>
-                  <th>Local</th>
-                  <th>Location</th>
+                  <th>Place</th>
                   <th>Detail</th>
                   <th>Volunteer</th>
                   <th>Comment</th>
@@ -63,7 +62,7 @@ class LocalList extends Component {
                   return (
                     <tr key={i}>
                       <td>{m.name.toUpperCase()}</td>
-                      <td>
+                      {/* <td>
                         {m.address.toUpperCase() +
                           ' ' +
                           m.city.toUpperCase() +
@@ -71,7 +70,7 @@ class LocalList extends Component {
                           m.state.toUpperCase() +
                           '-' +
                           m.zipcode}
-                      </td>
+                      </td> */}
                       <td>
                         <Link to={`/List/Detail/${m.id}`} className="link">
                           {/* <i className="fas fa-info-circle" /> */}
@@ -100,7 +99,7 @@ class LocalList extends Component {
           </div>
         ) : (
           <div className="alert alert-info" role="alert">
-            Migo couldn't fin results for you. Click <Link to={`/`}>here</Link>{' '}
+            Migo couldn't find results for you. Click <Link to={`/`}>here</Link>{' '}
             if you would like to go home.
           </div>
         )}

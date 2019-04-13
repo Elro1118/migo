@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using content;
 using migo.Pages.Model;
 using Microsoft.AspNetCore.Authorization;
+using Geocoding.Google;
+using Geocoding;
 
 namespace content.Controllers
 {
@@ -68,6 +70,11 @@ namespace content.Controllers
       }
 
       _context.Entry(local).State = EntityState.Modified;
+      IGeocoder geocoder = new GoogleGeocoder() { ApiKey = "AIzaSyBspmkDaTr3qyTe6fXB5qT6MCQKiABCTKc" };
+      IEnumerable<Address> addresses = await geocoder.GeocodeAsync(local.Address + ' ' + local.City + ' ' + local.State + ' ' + local.State);
+      local.Latitude = addresses.First().Coordinates.Latitude;
+      local.Longitude = addresses.First().Coordinates.Longitude;
+
 
       try
       {
@@ -93,6 +100,15 @@ namespace content.Controllers
     [Authorize]
     public async Task<ActionResult<Local>> PostLocal(Local local)
     {
+      //TODO: geocode the address
+      IGeocoder geocoder = new GoogleGeocoder() { ApiKey = "AIzaSyBspmkDaTr3qyTe6fXB5qT6MCQKiABCTKc" };
+      IEnumerable<Address> addresses = await geocoder.GeocodeAsync(local.Address + ' ' + local.City + ' ' + local.State + ' ' + local.State);
+      local.Latitude = addresses.First().Coordinates.Latitude;
+      local.Longitude = addresses.First().Coordinates.Longitude;
+
+      Console.WriteLine("Formatted: " + addresses.First().FormattedAddress); //Formatted: 1600 Pennsylvania Ave SE, Washington, DC 20003, USA
+      Console.WriteLine("Coordinates: " + addresses.First().Coordinates.Latitude + ", " + addresses.First().Coordinates.Longitude); //Coordinates: 38.8791981, -76.9818437
+
       _context.Locals.Add(local);
       await _context.SaveChangesAsync();
 

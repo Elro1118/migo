@@ -43,7 +43,8 @@ class LogIn extends Component {
       .then(resp => {
         this.setState({ requestStatus: resp.status })
         localStorage.setItem('myUserId', parseInt(resp.data.id, 10))
-        localStorage.setItem('userName', resp.data.userName)
+        var splitted = resp.data.userName.split(' ')
+        localStorage.setItem('userName', splitted[0] + ' ' + splitted[1])
         localStorage.setItem('myUserToken', resp.data.token)
         localStorage.setItem(
           'myUserTokenExpirationTime',

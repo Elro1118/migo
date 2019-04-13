@@ -52,6 +52,7 @@ class LocalList extends Component {
               <thead>
                 <tr>
                   <th>Place</th>
+                  <th>Address</th>
                   <th>Detail</th>
                   <th>Volunteer</th>
                   <th>Comment</th>
@@ -62,7 +63,7 @@ class LocalList extends Component {
                   return (
                     <tr key={i}>
                       <td>{m.name.toUpperCase()}</td>
-                      {/* <td>
+                      <td>
                         {m.address.toUpperCase() +
                           ' ' +
                           m.city.toUpperCase() +
@@ -70,7 +71,7 @@ class LocalList extends Component {
                           m.state.toUpperCase() +
                           '-' +
                           m.zipcode}
-                      </td> */}
+                      </td>
                       <td>
                         <Link to={`/List/Detail/${m.id}`} className="link">
                           {/* <i className="fas fa-info-circle" /> */}

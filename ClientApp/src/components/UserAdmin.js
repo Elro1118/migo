@@ -63,7 +63,7 @@ class UserAdmin extends Component {
                 to={`/Admin/Local/${localStorage.getItem('myUserId')}`}
                 className="link"
               >
-                <h3>Add Local</h3>
+                <h3>Add Place</h3>
               </Link>
             </li>
             <li onClick={this.logOut}>
@@ -77,8 +77,8 @@ class UserAdmin extends Component {
             <table className="table">
               <thead>
                 <tr>
-                  <th>Local</th>
-                  <th>Location</th>
+                  <th>Place</th>
+                  <th>Address</th>
                   <th>Volunteer</th>
                   <th>Comment</th>
                 </tr>
@@ -113,7 +113,7 @@ class UserAdmin extends Component {
                           value={m.id}
                           onClick={this.deleteLocal}
                         >
-                          Delete
+                          X
                         </button>
                       </td>
                     </tr>

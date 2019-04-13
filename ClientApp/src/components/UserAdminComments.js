@@ -64,7 +64,7 @@ class UserAdminComments extends Component {
                           value={m.id}
                           onClick={this.deleteComment}
                         >
-                          Delete
+                          X
                         </button>
                       </td>
                     </tr>

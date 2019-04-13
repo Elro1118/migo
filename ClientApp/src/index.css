@@ -213,13 +213,15 @@ body {
   flex-flow: row wrap;
   justify-content: space-around;
 }
-
-.frame-picture img {
+.frame-picture figure {
+  text-align: center;
+}
+.frame-picture figure img {
   min-width: 120px;
   min-height: 120px;
   max-width: 120px;
   max-height: 120px;
-  object-fit: fill;
+  object-fit: cover;
   border-radius: 5rem;
 }
 
@@ -329,19 +331,14 @@ h5 {
     margin-left: 0.5rem;
   }
   /* Home components ends */
-  /* Detail components begins */
+  /* LocalDetail components begins */
   .detail-section {
     border-top-right-radius: 1rem;
   }
   .volunteer-list {
     border-bottom-left-radius: 0;
   }
-  .frame-picture img {
-    width: 3rem;
-    height: 3rem;
-    object-fit: fill;
-    border-radius: 3rem;
-  }
+
   .comment-list {
     border-top-right-radius: 0;
     border-bottom-left-radius: 1rem;
@@ -349,7 +346,7 @@ h5 {
   .comment-list ul {
     padding-bottom: 0.5rem;
   }
-  /* Detail components ends */
+  /* LocalDetail components ends */
   /* LocalList components begins */
   .main-LocalList h1 {
     font-size: 1.3rem;
@@ -378,11 +375,30 @@ h5 {
   }
   /* UserAdmin component ends */
 }
-@media (orientation: landscape) {
-  .main-section img {
-    width: 5rem;
-    height: 100%;
-    border-top-right-radius: 1rem;
-    border-bottom-left-radius: 0;
+@media (max-width: 650px) {
+  /* Home component begins */
+  .resume p {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
+  .main-section img {
+    min-width: 200px;
+    max-width: 200px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 1rem;
+    object-fit: fill;
+  }
+  .language-section img {
+    min-width: 30px;
+    min-height: 30px;
+    max-width: 30px;
+    max-height: 30px;
+    object-fit: fill;
+  }
+
+  frame-picture img {
+    border-top-right-radius: 5rem;
+  }
+  /* Home component ends */
 }

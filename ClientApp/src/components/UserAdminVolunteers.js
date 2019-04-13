@@ -77,7 +77,7 @@ class UserAdminVolunteers extends Component {
                           value={m.id}
                           onClick={this.deleteVolunteer}
                         >
-                          Delete
+                          X
                         </button>
                       </td>
                     </tr>

@@ -45,10 +45,10 @@ class LocalDetail extends Component {
               <h2>Detail</h2>
               <div className="label-detail">
                 <label htmlFor="local">
-                  Local: {this.state.local.name.toUpperCase()}
+                  Place: {this.state.local.name.toUpperCase()}
                 </label>
                 <label htmlFor="location">
-                  Location:
+                  Address:
                   {this.state.local.address.toUpperCase() +
                     ' ' +
                     this.state.local.city.toUpperCase() +
@@ -69,7 +69,7 @@ class LocalDetail extends Component {
                   return (
                     <figure key={i}>
                       <img src={m.photo} alt={m.name} />
-                      <figcaption>{m.name}</figcaption>
+                      <figcaption>{m.name.split(' ', 1)}</figcaption>
                     </figure>
                   )
                 })}

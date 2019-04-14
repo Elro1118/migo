@@ -17,7 +17,8 @@ body {
 }
 /* NavigationMain component begins */
 .main-nav,
-.home-nav {
+.home-nav,
+.list-nav {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -26,10 +27,14 @@ body {
 }
 
 .main-nav h1,
-.home-nav h1 {
+.home-nav h1,
+.list-nav h1 {
   font-family: 'Luckiest Guy', cursive;
   margin-left: 5rem;
   color: white;
+}
+.list-nav p {
+  margin-right: 5rem;
 }
 .main-nav ul {
   display: flex;
@@ -40,7 +45,6 @@ body {
 }
 
 .link {
-  /* font-weight: bold; */
   color: white;
 }
 .link:hover {
@@ -326,6 +330,11 @@ h5 {
 /* Navigation components end */
 
 @media (max-width: 600px) {
+  /* NavigationList component begins */
+  .list-nav p {
+    margin-right: 5rem;
+  }
+  /* NavigationList component ends */
   /* NavigationMain component begins */
   .main-nav {
     align-items: baseline;

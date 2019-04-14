@@ -74,7 +74,7 @@ class LocalList extends Component {
                     </Link>{' '}
                     |{' '}
                     <Link to={`Comment/${m.id}`} className="link2">
-                      Write a thought
+                      Write a comment
                     </Link>
                   </label>
                   &nbsp;

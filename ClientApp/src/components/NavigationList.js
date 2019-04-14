@@ -3,18 +3,18 @@ import { Link } from 'react-router-dom'
 class NavigationList extends Component {
   render() {
     return (
-      <div>
-        <h5>
+      <nav className="list-nav">
+        <h1>
           <Link to={`/`} className="link">
-            Home
-          </Link>{' '}
-          /{' '}
-          <Link to={`/List/${localStorage.getItem('myWord')}`} className="link">
-            {' '}
-            List
+            MIGO!
           </Link>
-        </h5>
-      </div>
+        </h1>
+        <p>
+          <Link to={`/List/${localStorage.getItem('myWord')}`} className="link">
+            Place List
+          </Link>
+        </p>
+      </nav>
     )
   }
 }

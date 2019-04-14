@@ -1,7 +1,7 @@
 :root {
   font: 16px / 1 sans-serif;
   font-family: 'Open Sans', sans-serif;
-  color: #102418;
+  color: #1a1a1a;
 }
 
 html {
@@ -10,40 +10,65 @@ html {
 
 body {
   margin: 0;
-  min-height: 100px;
-  max-height: 100px;
-  background-color: #fff;
+
+  min-height: 100%;
+  max-height: 100%;
+  background-color: white;
+}
+/* NavigationMain component begins */
+.main-nav {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  background-color: #6a60a9;
+  margin: 0;
 }
 
+.main-nav h1 {
+  font-family: 'Luckiest Guy', cursive;
+  margin-left: 5rem;
+  color: white;
+}
+.main-nav ul {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  margin-right: 5rem;
+}
+/* NavigationMain component ends */
 /* Home component begins */
+
 .home-container {
   display: flex;
   align-items: center;
   align-content: center;
   justify-content: center;
+
+  background-image: linear-gradient(
+      rgba(106, 96, 169, 0.8),
+      rgba(251, 209, 75, 0.6)
+    ),
+    url('./images/home3.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: -webkit-fill-available;
 }
 
 .main-section {
   display: flex;
   border-radius: 1rem;
-  box-shadow: 0 0.1rem 0.5rem rgba(0, 0, 0, 0.3);
 }
-.main-section img {
-  flex: 1;
-  width: 50%;
-  border-top-left-radius: 1rem;
-  border-bottom-left-radius: 1rem;
-}
+
 .home-section {
   flex: 1;
-  width: 50%;
+
   display: flex;
   align-items: center;
   justify-content: center;
   flex-flow: column wrap;
-  border-top-right-radius: 1rem;
-  border-bottom-right-radius: 1rem;
-  background-color: #d1b6e1;
 }
 .resume {
   display: flex;
@@ -51,9 +76,11 @@ body {
   align-items: center;
 }
 .resume p {
-  width: 40%;
-  text-align: justify;
+  /* width: 40%; */
+  text-align: center;
   margin: 0.5rem 0rem;
+  color: white;
+  font-size: 1.5rem;
 }
 .resume h1 {
   font-family: 'Luckiest Guy', cursive;
@@ -75,16 +102,17 @@ body {
 .text-section {
   flex: 1;
   padding-left: 0.5rem;
-  border-radius: 1rem;
+  padding-right: 0.5rem;
+  border-radius: 0.5rem;
   border-style: none;
 }
 .button-section,
 .log-in-button,
 .sign-up-button {
   flex: 1;
-  background: #beb639;
+  background: #fbd14b;
   border-style: none;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   letter-spacing: 0.05rem;
   padding: 0.75rem 1rem;
   font-size: 0.9rem;
@@ -128,11 +156,11 @@ body {
   background-color: #d1b6e1;
 }
 .link {
-  font-weight: bold;
-  color: #102418;
+  /* font-weight: bold; */
+  color: white;
 }
 .link:hover {
-  color: #beb639;
+  color: #fbd14b;
   text-decoration: none;
 }
 
@@ -277,24 +305,34 @@ h5 {
 /* Navigation components end */
 
 @media (max-width: 600px) {
-  .home-container {
-    display: flex;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+  /* NavigationMain component begins */
+  .main-nav {
+    align-items: baseline;
   }
+  .main-nav h1 {
+    margin-left: 3rem;
+
+    /* border: 0.1px solid black; */
+  }
+  .main-nav ul {
+    margin-right: 3rem;
+    /* border: 0.1px solid black; */
+  }
+  /* NavigationMain component ends */
   /* Home component begins */
+  .home-container {
+    height: -webkit-fill-available;
+  }
   .main-section {
     display: flex;
     flex-flow: column wrap;
   }
   .main-section img {
-    width: 100%;
-    height: 5rem;
-    border-top-right-radius: 1rem;
-    border-bottom-left-radius: 0;
+    min-width: 280px;
+    max-width: 280px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 1rem;
+    object-fit: fill;
   }
   .home-section {
     width: 100%;
@@ -320,7 +358,7 @@ h5 {
   }
   .log-in-button,
   .sign-up-button {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .button-section,
@@ -329,6 +367,9 @@ h5 {
     font-size: 0.8rem;
     padding: 0.5rem 0.5rem;
     margin-left: 0.5rem;
+  }
+  .text-section {
+    padding-right: 1.5rem;
   }
   /* Home components ends */
   /* LocalDetail components begins */
@@ -376,6 +417,11 @@ h5 {
   /* UserAdmin component ends */
 }
 @media (max-width: 650px) {
+  /* NavigationMain component begins */
+  .main-nav {
+    align-items: baseline;
+  }
+  /* NavigationMain component ends */
   /* Home component begins */
   .resume p {
     width: 100%;
@@ -397,6 +443,13 @@ h5 {
     object-fit: fill;
   }
 
+  .text-section {
+    flex: 1;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 0.5rem;
+    border-style: none;
+  }
   frame-picture img {
     border-top-right-radius: 5rem;
   }

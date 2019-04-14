@@ -33,7 +33,7 @@ class LocalList extends Component {
     return (
       <div className="main-LocalList">
         <NavigationHome />
-        <h1>List of Places Teach English</h1>
+        {/* <h1>List of Places Teach English</h1> */}
         <div className="search-city-section-2">
           <input
             className="text-section"
@@ -47,54 +47,94 @@ class LocalList extends Component {
           </button>
         </div>
         {this.state.locals.length > 0 && this.state.requestStatus === 200 ? (
-          <div className="table-responsive">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Place</th>
-                  <th>Address</th>
-                  <th>Detail</th>
-                  <th>Volunteer</th>
-                  <th>Comment</th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.state.locals.map((m, i) => {
-                  return (
-                    <tr key={i}>
-                      <td>{m.name.toUpperCase()}</td>
-                      <td>
-                        {m.address.toUpperCase() +
-                          ' ' +
-                          m.city.toUpperCase() +
-                          ' ' +
-                          m.state.toUpperCase() +
-                          '-' +
-                          m.zipcode}
-                      </td>
-                      <td>
-                        <Link to={`/List/Detail/${m.id}`} className="link">
-                          {/* <i className="fas fa-info-circle" /> */}
-                          More detail
-                        </Link>
-                      </td>
-                      <td>
-                        <Link to={`Volunteer/${m.id}`} className="link">
-                          Add
-                        </Link>
-                      </td>
-                      <td>
-                        <Link to={`Comment/${m.id}`} className="link">
-                          Add
-                        </Link>
-                      </td>
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
-          </div>
-        ) : this.state.requestStatus === 0 ? (
+          <ul>
+            {this.state.locals.map((m, i) => {
+              return (
+                <li key={i}>
+                  <label>
+                    <strong>{m.name.toUpperCase()}</strong>
+                  </label>{' '}
+                  <label>
+                    {m.address.toUpperCase() +
+                      ' ' +
+                      m.city.toUpperCase() +
+                      ' ' +
+                      m.state.toUpperCase() +
+                      '-' +
+                      m.zipcode}
+                  </label>{' '}
+                  <label>
+                    <Link to={`/List/Detail/${m.id}`} className="link2">
+                      {' '}
+                      More detail
+                    </Link>{' '}
+                    |{' '}
+                    <Link to={`Volunteer/${m.id}`} className="link2">
+                      Apply for volunteer
+                    </Link>{' '}
+                    |{' '}
+                    <Link to={`Comment/${m.id}`} className="link2">
+                      Write a thought
+                    </Link>
+                  </label>
+                  &nbsp;
+                </li>
+              )
+            })}
+          </ul>
+        ) : // <div className="table-responsive">
+        //   <table className="table">
+        //     <thead>
+        //       <tr>
+        //         <th>Place</th>
+        //         <th>Address</th>
+        //         <th>Detail</th>
+        //         <th>Volunteer</th>
+        //         <th>Comment</th>
+        //       </tr>
+        //     </thead>
+        //     <tbody>
+        //       {this.state.locals.map((m, i) => {
+        //         return (
+        //           <tr key={i}>
+        //             <td>
+        //               <p>{m.name.toUpperCase()}</p>
+        //               <p>More detail</p>
+        //               <p>Apply as Volunteer</p>
+        //               <p>Write a thought</p>
+        //             </td>
+        //             <td>
+        //               {m.address.toUpperCase() +
+        //                 ' ' +
+        //                 m.city.toUpperCase() +
+        //                 ' ' +
+        //                 m.state.toUpperCase() +
+        //                 '-' +
+        //                 m.zipcode}
+        //             </td>
+        //             <td>
+        //               <Link to={`/List/Detail/${m.id}`} className="link">
+        //                 {/* <i className="fas fa-info-circle" /> */}
+        //                 More detail
+        //               </Link>
+        //             </td>
+        //             <td>
+        //               <Link to={`Volunteer/${m.id}`} className="link">
+        //                 Add
+        //               </Link>
+        //             </td>
+        //             <td>
+        //               <Link to={`Comment/${m.id}`} className="link">
+        //                 Add
+        //               </Link>
+        //             </td>
+        //           </tr>
+        //         )
+        //       })}
+        //     </tbody>
+        //   </table>
+        // </div>
+        this.state.requestStatus === 0 ? (
           <div className="alert alert-info" role="alert">
             Migo is loading results...
           </div>

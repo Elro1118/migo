@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom'
 class NavigationHome extends Component {
   render() {
     return (
-      <div>
-        <h5>
+      <nav className="home-nav">
+        <h1>
           <Link to={`/`} className="link">
-            Home
+            MIGO!
           </Link>
-        </h5>
-      </div>
+        </h1>
+      </nav>
     )
   }
 }

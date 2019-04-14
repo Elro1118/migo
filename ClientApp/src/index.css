@@ -16,7 +16,8 @@ body {
   background-color: white;
 }
 /* NavigationMain component begins */
-.main-nav {
+.main-nav,
+.home-nav {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -24,7 +25,8 @@ body {
   margin: 0;
 }
 
-.main-nav h1 {
+.main-nav h1,
+.home-nav h1 {
   font-family: 'Luckiest Guy', cursive;
   margin-left: 5rem;
   color: white;
@@ -36,6 +38,16 @@ body {
   justify-content: space-between;
   margin-right: 5rem;
 }
+
+.link {
+  /* font-weight: bold; */
+  color: white;
+}
+.link:hover {
+  color: #fbd14b;
+  text-decoration: none;
+}
+
 /* NavigationMain component ends */
 /* Home component begins */
 
@@ -131,12 +143,20 @@ body {
 }
 /* Home component ends */
 /* LocalList component begins */
+
+.main-LocalList ul li {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2.2rem;
+  list-style: none;
+}
+
 .search-city-section-2 {
   display: flex;
   margin-right: 5rem;
   margin-left: 5rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
 }
 .search-city-section-2 input {
   flex: 7;
@@ -155,11 +175,11 @@ body {
 .table tbody {
   background-color: #d1b6e1;
 }
-.link {
-  /* font-weight: bold; */
-  color: white;
+.link2 {
+  font-weight: bold;
+  color: #6a60a9;
 }
-.link:hover {
+.link2:hover {
   color: #fbd14b;
   text-decoration: none;
 }
@@ -181,6 +201,7 @@ body {
   height: 1.5rem;
 }
 .form-section {
+  margin-top: 2.5rem;
   margin-left: 5rem;
   margin-right: 5rem;
   padding-right: 0.5rem;
@@ -389,9 +410,17 @@ h5 {
   }
   /* LocalDetail components ends */
   /* LocalList components begins */
+  /* .main-LocalList ul li {
+    pa
+  } */
+
+  .main-LocalList label {
+    font-size: 0.8rem;
+  }
   .main-LocalList h1 {
     font-size: 1.3rem;
   }
+
   .link:hover {
     color: #beb639;
     text-decoration: none;
@@ -399,8 +428,8 @@ h5 {
   /* LocalList component ends */
   /* Forms style begin */
   .form-section {
-    margin-left: 4rem;
-    margin-right: 4rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
   }
   /* Form style end */
   /* UserAdmin component begins*/

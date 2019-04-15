@@ -5,7 +5,7 @@ import NavigationHome from './NavigationHome'
 import ReactMapGL, { Marker, NavigationControl, Popup } from 'react-map-gl'
 import pin from '../images/pin.png'
 
-class LocalList extends Component {
+class LocalList2 extends Component {
   state = {
     searchingWord: this.props.match.params.searchingWord,
     requestStatus: 0,
@@ -103,18 +103,13 @@ class LocalList extends Component {
           </button>
         </div>
         {this.state.locals.length > 0 && this.state.requestStatus === 200 ? (
-          // <ul>
-          //   {this.state.locals.map((m, i) => {
-          //     return <li key={i}>{m.name.toUpperCase()}</li>
-          //   })}
-          // </ul>
           <div className="map">
             <ReactMapGL
               {...this.state.viewport}
               width="100%"
               height="100%"
               mapStyle="mapbox://styles/mapbox/streets-v11"
-              mapboxApiAccessToken="pk.eyJ1IjoianVhbjIzc2FsYXphciIsImEiOiJjanUyaW0xMWIwY3QxNDRvN3ZnMW91N3BxIn0._YtrtrN7f2ba2F4S3HVL2Q"
+              mapboxApiAccessToken="pk.eyJ1IjoiZWxybzExMTgiLCJhIjoiY2p1Y3g5NXplMHQyMTQzcGJqdmtheTJxMiJ9.0evH-ml03aBE3cuwK-O0jQ"
               onViewportChange={this._updateViewport}
             >
               {this.renderPopup()}
@@ -166,4 +161,4 @@ class LocalList extends Component {
   }
 }
 
-export default LocalList
+export default LocalList2

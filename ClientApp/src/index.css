@@ -70,7 +70,8 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: -webkit-fill-available;
+  /* height: -webkit-fill-available; */
+  height: calc(100vh - 64px);
 }
 
 .main-section {
@@ -350,9 +351,9 @@ h5 {
   }
   /* NavigationMain component ends */
   /* Home component begins */
-  .home-container {
+  /* .home-container {
     height: -webkit-fill-available;
-  }
+  } */
   .main-section {
     display: flex;
     flex-flow: column wrap;

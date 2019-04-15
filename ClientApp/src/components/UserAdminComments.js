@@ -42,8 +42,20 @@ class UserAdminComments extends Component {
   render() {
     return (
       <div className="main-LocalList">
-        <NavigationAdmin />
+        <NavigationAdmin
+          userName={localStorage.getItem('userName')}
+          history={this.props.history}
+        />
         <h1>Manage Comments</h1>
+        <h5>
+          <Link
+            to={`/Admin/${localStorage.getItem('myUserId')}`}
+            className="sub-link"
+          >
+            Go back to manage place
+          </Link>
+        </h5>
+
         {this.state.comments.length > 0 && this.state.requestStatus === 200 ? (
           <div className="table-responsive">
             <table className="table">

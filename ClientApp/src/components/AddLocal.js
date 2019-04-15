@@ -53,7 +53,7 @@ class AddLocal extends Component {
         },
         schedule: {
           type: 'string',
-          title: 'Schedule',
+          title: 'Schedule for class',
           minLength: 1,
           maxLength: 300,
           default: ''
@@ -109,6 +109,14 @@ class AddLocal extends Component {
           userName={localStorage.getItem('userName')}
           history={this.props.history}
         />
+        <h5>
+          <Link
+            to={`/Admin/${localStorage.getItem('myUserId')}`}
+            className="sub-link"
+          >
+            Go back to manage place
+          </Link>
+        </h5>
         {this.state.requestStatus === 201 ? (
           <div className="alert alert-success" role="alert">
             Migo added the place successfully. Click{' '}

@@ -48,8 +48,12 @@ class UserAdmin extends Component {
           history={this.props.history}
         />
         <div className="main-LocalList">
+          <h1>Manage Places</h1>
           <h5>
-            <Link to={`/Admin/Local/${localStorage.getItem('myUserId')}`}>
+            <Link
+              to={`/Admin/Local/${localStorage.getItem('myUserId')}`}
+              className="sub-link"
+            >
               Add Place
             </Link>
           </h5>
@@ -80,12 +84,18 @@ class UserAdmin extends Component {
                             m.zipcode}
                         </td>
                         <td>
-                          <Link to={`/Admin/Volunteers/${m.id}`}>
+                          <Link
+                            to={`/Admin/Volunteers/${m.id}`}
+                            className="sub-link2"
+                          >
                             More detail
                           </Link>
                         </td>
                         <td>
-                          <Link to={`/Admin/Comments/${m.id}`}>
+                          <Link
+                            to={`/Admin/Comments/${m.id}`}
+                            className="sub-link2"
+                          >
                             More detail
                           </Link>
                         </td>

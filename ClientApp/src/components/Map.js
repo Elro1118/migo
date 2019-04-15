@@ -10,7 +10,7 @@ class Map extends Component {
     viewport: {
       latitude: 27.7700989,
       longitude: -82.6364093,
-      zoom: 9,
+      zoom: 10,
       bearing: 0,
       pitch: 0
     }
@@ -56,20 +56,9 @@ class Map extends Component {
         }}
       >
         <div className="infobox">
-          <Link to={`/List/Detail/${popupInfo.id}`} className="link2">
-            {' '}
-            <p>{popupInfo.name}</p>
-          </Link>
+          <p>{popupInfo.name}</p>
+
           <p>{popupInfo.address}</p>
-          <label>
-            <Link to={`Volunteer/${popupInfo.id}`} className="link2">
-              Apply for volunteer
-            </Link>{' '}
-            |{' '}
-            <Link to={`Comment/${popupInfo.id}`} className="link2">
-              Write a comment
-            </Link>
-          </label>
         </div>
       </Popup>
     )

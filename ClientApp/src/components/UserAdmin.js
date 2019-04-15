@@ -39,99 +39,82 @@ class UserAdmin extends Component {
         this.getLocals()
       })
   }
-  logOut = () => {
-    localStorage.removeItem('myUserId')
-
-    localStorage.removeItem('userName')
-
-    localStorage.removeItem('myUserToken')
-
-    localStorage.removeItem('myUserTokenExpirationTime')
-
-    this.props.history.push(`/`)
-  }
 
   render() {
     return (
-      <div className="main-LocalList">
-        <NavigationAdmin />
-        <h1>Manage Places</h1>
-        <nav>
-          <ul>
-            <li>
-              <Link
-                to={`/Admin/Local/${localStorage.getItem('myUserId')}`}
-                className="link"
-              >
-                <h3>Add Place</h3>
-              </Link>
-            </li>
-            <li onClick={this.logOut}>
-              <h3>{localStorage.getItem('userName')}(Log Out)</h3>
-            </li>
-          </ul>
-        </nav>
+      <div>
+        <NavigationAdmin
+          userName={localStorage.getItem('userName')}
+          history={this.props.history}
+        />
+        <div className="main-LocalList">
+          <h5>
+            <Link to={`/Admin/Local/${localStorage.getItem('myUserId')}`}>
+              Add Place
+            </Link>
+          </h5>
 
-        {this.state.locals.length > 0 && this.state.requestStatus === 200 ? (
-          <div className="table-responsive">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Place</th>
-                  <th>Address</th>
-                  <th>Volunteer</th>
-                  <th>Comment</th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.state.locals.map((m, i) => {
-                  return (
-                    <tr key={i}>
-                      <td>{m.name.toUpperCase()}</td>
-                      <td>
-                        {m.address.toUpperCase() +
-                          ' ' +
-                          m.city.toUpperCase() +
-                          ' ' +
-                          m.state.toUpperCase() +
-                          '-' +
-                          m.zipcode}
-                      </td>
-                      <td>
-                        <Link to={`/Admin/Volunteers/${m.id}`} className="link">
-                          More detail
-                        </Link>
-                      </td>
-                      <td>
-                        <Link to={`/Admin/Comments/${m.id}`} className="link">
-                          More detail
-                        </Link>
-                      </td>
-                      <td>
-                        <button
-                          className="btn btn-danger"
-                          value={m.id}
-                          onClick={this.deleteLocal}
-                        >
-                          X
-                        </button>
-                      </td>
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
-          </div>
-        ) : this.state.requestStatus === 0 ? (
-          <div className="alert alert-info" role="alert">
-            Migo is loading results...
-          </div>
-        ) : (
-          <div className="alert alert-info" role="alert">
-            Migo could not find places to manage. You should add a place to
-            manage.
-          </div>
-        )}
+          {this.state.locals.length > 0 && this.state.requestStatus === 200 ? (
+            <div className="table-responsive">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Place</th>
+                    <th>Address</th>
+                    <th>Volunteer</th>
+                    <th>Comment</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.locals.map((m, i) => {
+                    return (
+                      <tr key={i}>
+                        <td>{m.name.toUpperCase()}</td>
+                        <td>
+                          {m.address.toUpperCase() +
+                            ' ' +
+                            m.city.toUpperCase() +
+                            ' ' +
+                            m.state.toUpperCase() +
+                            '-' +
+                            m.zipcode}
+                        </td>
+                        <td>
+                          <Link to={`/Admin/Volunteers/${m.id}`}>
+                            More detail
+                          </Link>
+                        </td>
+                        <td>
+                          <Link to={`/Admin/Comments/${m.id}`}>
+                            More detail
+                          </Link>
+                        </td>
+                        <td>
+                          <button
+                            className="btn btn-danger"
+                            value={m.id}
+                            onClick={this.deleteLocal}
+                          >
+                            X
+                          </button>
+                        </td>
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>
+            </div>
+          ) : this.state.requestStatus === 0 ? (
+            <div className="alert alert-info" role="alert">
+              Migo is loading results...
+            </div>
+          ) : (
+            <div className="alert alert-info" role="alert">
+              Migo could not find places to manage. You should add a place to
+              manage.
+            </div>
+          )}
+        </div>
       </div>
     )
   }

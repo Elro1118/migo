@@ -15,24 +15,40 @@ body {
   max-height: 100%;
   background-color: white;
 }
-/* NavigationMain component begins */
+
 .main-nav,
 .home-nav,
-.list-nav {
+.list-nav,
+.admin-nav {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   background-color: #6a60a9;
   margin: 0;
+  border: 0.1px solid black;
 }
 
 .main-nav h1,
 .home-nav h1,
-.list-nav h1 {
+.list-nav h1,
+.admin-nav h1 {
   font-family: 'Luckiest Guy', cursive;
   margin-left: 5rem;
+  margin-top: 1rem;
   color: white;
 }
+.admin-nav ul {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  margin-right: 5rem;
+}
+.admin-nav li label {
+  color: white;
+}
+
+/* NavigationMain component begins */
 .list-nav p {
   margin-right: 5rem;
 }
@@ -42,6 +58,7 @@ body {
   align-content: center;
   justify-content: space-between;
   margin-right: 5rem;
+  border: 0.1px solid black;
 }
 
 .link {

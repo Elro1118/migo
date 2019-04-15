@@ -105,7 +105,10 @@ class AddLocal extends Component {
   render() {
     return (
       <div>
-        <NavigationAdmin />
+        <NavigationAdmin
+          userName={localStorage.getItem('userName')}
+          history={this.props.history}
+        />
         {this.state.requestStatus === 201 ? (
           <div className="alert alert-success" role="alert">
             Migo added the place successfully. Click{' '}

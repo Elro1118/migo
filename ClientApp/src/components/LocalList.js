@@ -52,7 +52,9 @@ class LocalList extends Component {
               return (
                 <li key={i}>
                   <label>
-                    <strong>{m.name.toUpperCase()}</strong>
+                    <Link to={`/List/Detail/${m.id}`} className="link2">
+                      <strong>{m.name.toUpperCase()}</strong>
+                    </Link>
                   </label>{' '}
                   <label>
                     {m.address.toUpperCase() +
@@ -64,11 +66,6 @@ class LocalList extends Component {
                       m.zipcode}
                   </label>{' '}
                   <label>
-                    <Link to={`/List/Detail/${m.id}`} className="link2">
-                      {' '}
-                      More detail
-                    </Link>{' '}
-                    |{' '}
                     <Link to={`Volunteer/${m.id}`} className="link2">
                       Apply for volunteer
                     </Link>{' '}

@@ -217,6 +217,7 @@ body {
 }
 /* Style to all forms end */
 /* LocalDetail component begins */
+
 .main-section {
   display: flex;
   margin: 5rem;
@@ -329,7 +330,12 @@ h5 {
   margin-bottom: 1rem;
 }
 /* Navigation components end */
-
+/*  Map component begins*/
+.map {
+  width: 100vw;
+  height: calc(100vh - 64px);
+}
+/* Map component ends */
 @media (max-width: 600px) {
   /* NavigationList component begins */
   .list-nav p {

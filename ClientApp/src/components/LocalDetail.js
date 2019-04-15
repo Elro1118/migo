@@ -1,11 +1,20 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import NavigationList from './NavigationList'
+import Map from './Map'
 
 class LocalDetail extends Component {
   state = {
     requestStatus: 0,
-    local: { address: '', state: '', city: '', name: '', schedule: '' },
+    local: {
+      address: '',
+      state: '',
+      city: '',
+      name: '',
+      schedule: '',
+      latitude: 27.7700989,
+      longitude: -82.6364093
+    },
     volunteers: [],
     comments: []
   }
@@ -37,7 +46,7 @@ class LocalDetail extends Component {
 
   render() {
     return (
-      <div>
+      <div className="detail-main">
         <NavigationList />
         <div className="main-section">
           <div className="detail-volunteer">
@@ -85,6 +94,7 @@ class LocalDetail extends Component {
             </ul>
           </div>
         </div>
+        <Map local={this.state.local} />
       </div>
     )
   }

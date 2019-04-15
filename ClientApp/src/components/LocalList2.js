@@ -15,7 +15,7 @@ class LocalList2 extends Component {
     viewport: {
       latitude: 27.7700989,
       longitude: -82.6364093,
-      zoom: 12.5,
+      zoom: 9,
       bearing: 0,
       pitch: 0
     }
@@ -47,6 +47,8 @@ class LocalList2 extends Component {
     axios
       .get(`/api/Search/locals?query=${this.state.searchingWord}`)
       .then(resp => {
+        console.log(resp.status)
+        console.log(resp.data.results)
         this.setState({
           requestStatus: resp.status,
           locals: resp.data.results
@@ -77,9 +79,20 @@ class LocalList2 extends Component {
         }}
       >
         <div className="infobox">
-          <p>{popupInfo.name}</p>
+          <Link to={`/List/Detail/${popupInfo.id}`} className="link2">
+            {' '}
+            <p>{popupInfo.name}</p>
+          </Link>
           <p>{popupInfo.address}</p>
-          <p>{popupInfo.website}</p>
+          <label>
+            <Link to={`Volunteer/${popupInfo.id}`} className="link2">
+              Apply for volunteer
+            </Link>{' '}
+            |{' '}
+            <Link to={`Comment/${popupInfo.id}`} className="link2">
+              Write a comment
+            </Link>
+          </label>
         </div>
       </Popup>
     )
@@ -89,7 +102,6 @@ class LocalList2 extends Component {
     return (
       <div className="main-LocalList">
         <NavigationHome />
-        <h1>List of Places Teach English</h1>
         <div className="search-city-section-2">
           <input
             className="text-section"
@@ -113,7 +125,7 @@ class LocalList2 extends Component {
               onViewportChange={this._updateViewport}
             >
               {this.renderPopup()}
-              {this.state.locals(business => (
+              {this.state.locals.map(business => (
                 <Marker
                   latitude={business.latitude}
                   longitude={business.longitude}
@@ -122,8 +134,8 @@ class LocalList2 extends Component {
                 >
                   <img
                     src={pin}
-                    height={64}
-                    width={64}
+                    height={32}
+                    width={32}
                     alt="Pin"
                     onClick={() => {
                       this.setState({ popupInfo: business })
@@ -138,7 +150,8 @@ class LocalList2 extends Component {
                   offsetTop={-64}
                   offsetLeft={-32}
                 >
-                  <img width={64} height={64} src={pin} alt="Pin" />
+                  {/* <img width={32} height={32} src={pin} alt="Pin" /> */}
+                  <i class="fas fa-male" />
                 </Marker>
               )}
               <div className="nav" style={this.navStyle}>

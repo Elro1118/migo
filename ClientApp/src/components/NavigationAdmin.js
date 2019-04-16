@@ -28,7 +28,7 @@ class NavigationAdmin extends Component {
           </li>
           <li>
             <button className="sign-up-button" onClick={this.logOut}>
-              Logo Out
+              Log Out
             </button>
           </li>
         </ul>

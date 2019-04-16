@@ -379,6 +379,15 @@ h5 {
     padding-left: 1rem;
     padding-right: 1rem;
   }
+  /* NavigationAdmin component begins */
+  .admin-nav ul {
+    margin-right: 0;
+    padding: 0.4rem;
+  }
+  .admin-nav h1 {
+    font-size: 1.3rem;
+  }
+  /* NavigationAdmin component ends */
 
   /* NavigationList component begins */
   .list-nav p {

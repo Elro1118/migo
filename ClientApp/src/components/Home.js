@@ -48,11 +48,17 @@ class Home extends Component {
                 <input
                   className="text-section"
                   type="text"
-                  placeholder="Search by city or zip code"
+                  placeholder="State, city or zip code"
                   value={this.state.searchingWord}
                   onChange={this.handleChanged}
                 />
-                <Link to={`List/${this.state.searchingWord}`}>
+                <Link
+                  to={`List/${
+                    this.state.searchingWord === ''
+                      ? 'florida'
+                      : this.state.searchingWord
+                  }`}
+                >
                   <button className="button-section">Search</button>
                 </Link>
               </div>

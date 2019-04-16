@@ -57,7 +57,7 @@ class LocalDetail extends Component {
                   Place: {this.state.local.name.toUpperCase()}
                 </label>
                 <label htmlFor="location">
-                  Address:
+                  Address:{' '}
                   {this.state.local.address.toUpperCase() +
                     ' ' +
                     this.state.local.city.toUpperCase() +
@@ -67,7 +67,7 @@ class LocalDetail extends Component {
                     this.state.local.zipcode}
                 </label>
                 <label htmlFor="schedule">
-                  Schedule:{this.state.local.schedule.toUpperCase()}
+                  Schedule: {this.state.local.schedule.toUpperCase()}
                 </label>
               </div>
             </div>

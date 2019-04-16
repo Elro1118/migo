@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ReactMapGL, { Marker, NavigationControl, Popup } from 'react-map-gl'
-import { Link } from 'react-router-dom'
 import pin from '../images/pin.png'
 
 class Map extends Component {

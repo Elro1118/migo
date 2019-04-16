@@ -62,7 +62,7 @@ class CommentRegistration extends Component {
           <div className="alert alert-success" role="alert">
             Migo added the comment successfully. Click{' '}
             <Link to={`/List/${localStorage.getItem('myWord')}`}>here</Link> if
-            you would like to go List of Places Teach English.
+            you would like to go to manage places.
           </div>
         ) : (
           <Form

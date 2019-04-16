@@ -150,7 +150,6 @@ class LocalList2 extends Component {
                   offsetTop={-64}
                   offsetLeft={-32}
                 >
-                  {/* <img width={32} height={32} src={pin} alt="Pin" /> */}
                   <i class="fas fa-male" />
                 </Marker>
               )}

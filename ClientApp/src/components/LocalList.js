@@ -79,59 +79,7 @@ class LocalList extends Component {
               )
             })}
           </ul>
-        ) : // <div className="table-responsive">
-        //   <table className="table">
-        //     <thead>
-        //       <tr>
-        //         <th>Place</th>
-        //         <th>Address</th>
-        //         <th>Detail</th>
-        //         <th>Volunteer</th>
-        //         <th>Comment</th>
-        //       </tr>
-        //     </thead>
-        //     <tbody>
-        //       {this.state.locals.map((m, i) => {
-        //         return (
-        //           <tr key={i}>
-        //             <td>
-        //               <p>{m.name.toUpperCase()}</p>
-        //               <p>More detail</p>
-        //               <p>Apply as Volunteer</p>
-        //               <p>Write a thought</p>
-        //             </td>
-        //             <td>
-        //               {m.address.toUpperCase() +
-        //                 ' ' +
-        //                 m.city.toUpperCase() +
-        //                 ' ' +
-        //                 m.state.toUpperCase() +
-        //                 '-' +
-        //                 m.zipcode}
-        //             </td>
-        //             <td>
-        //               <Link to={`/List/Detail/${m.id}`} className="link">
-        //                 {/* <i className="fas fa-info-circle" /> */}
-        //                 More detail
-        //               </Link>
-        //             </td>
-        //             <td>
-        //               <Link to={`Volunteer/${m.id}`} className="link">
-        //                 Add
-        //               </Link>
-        //             </td>
-        //             <td>
-        //               <Link to={`Comment/${m.id}`} className="link">
-        //                 Add
-        //               </Link>
-        //             </td>
-        //           </tr>
-        //         )
-        //       })}
-        //     </tbody>
-        //   </table>
-        // </div>
-        this.state.requestStatus === 0 ? (
+        ) : this.state.requestStatus === 0 ? (
           <div className="alert alert-info" role="alert">
             Migo is loading results...
           </div>

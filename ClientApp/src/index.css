@@ -3,7 +3,9 @@
   font-family: 'Open Sans', sans-serif;
   color: #1a1a1a;
 }
-
+#root,
+#root > div,
+body,
 html {
   height: 100%;
 }
@@ -103,7 +105,8 @@ body {
   background-position: center;
   background-size: cover;
   /* height: -webkit-fill-available; */
-  height: calc(100vh - 64px);
+  /* height: calc(100vh - 64px); */
+  height: 100%;
 }
 
 .main-section {
@@ -390,7 +393,7 @@ h5 {
   /* NavigationMain component ends */
   /* Home component begins */
   /* .home-container {
-    height: -webkit-fill-available;
+    height: auto;
   } */
   .main-section {
     display: flex;
@@ -500,10 +503,14 @@ h5 {
   }
   /* NavigationMain component ends */
   /* Home component begins */
+  /* .home-container {
+    height: auto;
+  } */
   .resume p {
     width: 100%;
     padding-left: 1rem;
     padding-right: 1rem;
+    font-size: 0.7rem;
   }
   .main-section img {
     min-width: 200px;

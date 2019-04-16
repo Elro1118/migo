@@ -198,6 +198,7 @@ body {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
 }
+
 .search-city-section-2 input {
   flex: 7;
   border: 0.1rem solid #d1b6e1;
@@ -372,6 +373,13 @@ h5 {
 }
 /* Map component ends */
 @media (max-width: 600px) {
+  .search-city-section-2 {
+    margin-right: 0;
+    margin-left: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   /* NavigationList component begins */
   .list-nav p {
     margin-right: 5rem;

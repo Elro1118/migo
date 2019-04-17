@@ -1,23 +1,8 @@
-# Defualt Template for SDG .NET Course
+# MIGO!
 
-This is the default template for a simple .NET Core Web React App. This template has: 
+When immigrants arrived in the United States, most of them only have money to pay their bills and food. However, most immigrants who do not speak English want to learn it.
 
-- CORS Enabled
-- Postgres & EF Core
-- Swagger
-- Ready for Docker Deployment
+Many people may think that immigrants can find free English classes online like Dulingo, fluentu, etc. However, speaking is a skill that has to be developed through personal interaction.
 
-to use:
+MIGO! will help immigrants find places where immigrants can learn English for free.
 
-- [ ] Update your database name in `DatabaseContext.cs`
-
-to Deploy to heroku:
-- [ ] create a web app on heroku, make sure to have the CLI downloaded, installed, logged in and be logged into the container via heroku. 
-- [ ] Update your `dockerfile` to use your `*.dll` file instead of `dotnet-sdg-template.dll` 
-- [ ] Update the deploy script:
-    - [ ] change `sdg-template-image` to `your-project-name-image`
-    - [ ] change `heroku-web-app` to your web app name on heroku
-
-## PROTIP: 
-
-When you are complete with the project and have turned it in to your instructor, update this read me with details about the assignment. 

@@ -6,7 +6,7 @@ Many people may think that immigrants can find free English classes online like 
 
 MIGO! will help them find places where they can learn English for free.
 
-![](./client/src/images/Migo.gif)
+
 
 
 

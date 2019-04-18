@@ -106,9 +106,6 @@ namespace content.Controllers
       local.Latitude = addresses.First().Coordinates.Latitude;
       local.Longitude = addresses.First().Coordinates.Longitude;
 
-      Console.WriteLine("Formatted: " + addresses.First().FormattedAddress); //Formatted: 1600 Pennsylvania Ave SE, Washington, DC 20003, USA
-      Console.WriteLine("Coordinates: " + addresses.First().Coordinates.Latitude + ", " + addresses.First().Coordinates.Longitude); //Coordinates: 38.8791981, -76.9818437
-
       _context.Locals.Add(local);
       await _context.SaveChangesAsync();
 

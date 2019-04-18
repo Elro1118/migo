@@ -39,7 +39,6 @@ namespace migo.Services
     {
 
       this.jwtLifespan = settings.Value.JwtLifespan;
-
       this.jwtSecret = settings.Value.JwtToken;
 
     }
@@ -47,20 +46,13 @@ namespace migo.Services
 
 
     public AuthData GetAuthData(Client user)
-
     {
-
       var expirationTime = DateTime.UtcNow.AddSeconds(jwtLifespan);
-
-
-
       var tokenDescriptor = new SecurityTokenDescriptor
-
       {
 
         Subject = new ClaimsIdentity(new[]
-
-        {
+             {
 
             new Claim(ClaimTypes.Name, user.Name),
 
@@ -76,11 +68,11 @@ namespace migo.Services
 
         SigningCredentials = new SigningCredentials(
 
-              new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret)),
+                   new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret)),
 
-              SecurityAlgorithms.HmacSha256Signature
+                   SecurityAlgorithms.HmacSha256Signature
 
-          )
+               )
 
       };
 

@@ -8,7 +8,6 @@ MIGO! will help them find places where they can learn English for free.
 
 <img src="ClientApp/src/images/Migo.gif"/>
 
+For the Front-End, Migo was built using <a src="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5">HTML5</a>, <a src="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3">CSS</a>, and React Route.
 
-
-
-
+For the Back-End, Migo was built using .NET and C#. Migo has an API which talks to Google API to fetch a longitude a latitude for an address, and Uber Map Library uses the longitude and latitude to display the address on the map.

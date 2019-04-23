@@ -320,8 +320,6 @@ body {
   flex: 1;
   background-color: #e2afaf;
   border-top-left-radius: 1rem;
-  display: flex;
-  flex-flow: column wrap;
 }
 .detail-section h2 {
   padding-left: 0.5rem;

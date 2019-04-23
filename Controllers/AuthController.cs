@@ -93,7 +93,7 @@ namespace migo.Controllers
 
       var alreadyExists = await this.db.Clients.AnyAsync(a => a.Email == model.Email);
 
-      //if (alreadyExists) return BadRequest(new { email = "user with this email already exists" });
+
       if (alreadyExists) return BadRequest(new { email = "user with this email already exists" });
 
       var user = new Client
